@@ -1,0 +1,176 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+hosting:
+  billingAccountID: <YOUR-BILLING-ACCOUNT-ID>
+  folderIDs:
+    dev: "<FOLDER-ID of the folder that contains RAM dev project>"
+    <additional environment name>: "FOLDER-ID of the folder that contains RAM project for an additional environment, example prd. Remove the line if not needed, add multiple lines if needed>"
+  projectIDs:
+    dev: <PROJECT-ID of RAM project for the dev environment>
+    <additional environment name>: <PROJECT-ID of RAM project for an additional environment. Remove the line if not needed, add multiple lines if needed>
+  projectLabels:
+    <key>: <value Remove if not needed, respect label key and value naming constraints>
+  stackdriver:
+    projectIDs:
+      dev: <PROJECT-ID of stackdriver workspace host project for the dev environment, example himself>
+      <additional environment name>: <PROJECT-ID of stackdriver workspace host project for the dev environment, example himself. Remove the line if not needed, add multiple lines if needed>
+  repository:
+    name: <your repo name in cloud source, may be an external repo mirror>
+  gae:
+    region: europe-west
+  gcf:
+    region: europe-west1
+  gcs:
+    buckets:
+      CAIExport:
+        names:
+          dev: <Like yourprefix-cai-exports-dev>
+          <additional environment name>: <Like yourprefix-cai-exports-prd. Remove the line if not needed, add multiple lines if needed>
+      assetsJSONFile:
+        names:
+          dev: <Like yourprefix-assets-json-dev>
+          <additional environment name>:  <Like yourprefix--assets-json-prd. Remove the line if not needed, add multiple lines if needed>
+  bigquery:
+    dataset:
+      name: ram
+      location: EU
+  pubsub:
+    topicNames:
+      IAMPolicies: cai-iam-policies
+      RAMViolation: ram-violations
+      RAMComplianceStatus: ram-complianceStatus
+  firestore:
+    collectionIDs:
+      assets: assets
+monitoring:
+  organizationIDs:
+  - "<your GCP organization ID, add multiple lines if needed>"
+  directoryCustomerIDs:
+    <your directory customer ID>: <the email address of the super admin to impersonate>
+  labelKeyNames:
+    owner: owner
+    violationResolver: resolver
+  assetTypes:
+    iamPolicies:
+    - appengine.googleapis.com/Application
+    - appengine.googleapis.com/Service
+    - appengine.googleapis.com/Version
+    - bigquery.googleapis.com/Dataset
+    - bigquery.googleapis.com/Table
+    - bigtableadmin.googleapis.com/Cluster
+    - bigtableadmin.googleapis.com/Instance
+    - bigtableadmin.googleapis.com/Table
+    - cloudbilling.googleapis.com/BillingAccount
+    - cloudkms.googleapis.com/CryptoKey
+    - cloudkms.googleapis.com/CryptoKeyVersion
+    - cloudkms.googleapis.com/KeyRing
+    - cloudresourcemanager.googleapis.com/Folder
+    - cloudresourcemanager.googleapis.com/Organization
+    - cloudresourcemanager.googleapis.com/Project
+    - compute.googleapis.com/Address
+    - compute.googleapis.com/Autoscaler
+    - compute.googleapis.com/BackendBucket
+    - compute.googleapis.com/BackendService
+    - compute.googleapis.com/Disk
+    - compute.googleapis.com/Firewall
+    - compute.googleapis.com/ForwardingRule
+    - compute.googleapis.com/GlobalAddress
+    - compute.googleapis.com/GlobalForwardingRule
+    - compute.googleapis.com/HealthCheck
+    - compute.googleapis.com/HttpHealthCheck
+    - compute.googleapis.com/HttpsHealthCheck
+    - compute.googleapis.com/Image
+    - compute.googleapis.com/Instance
+    - compute.googleapis.com/InstanceGroup
+    - compute.googleapis.com/InstanceGroupManager
+    - compute.googleapis.com/InstanceTemplate
+    - compute.googleapis.com/Interconnect
+    - compute.googleapis.com/InterconnectAttachment
+    - compute.googleapis.com/License
+    - compute.googleapis.com/Network
+    - compute.googleapis.com/Project
+    - compute.googleapis.com/RegionBackendService
+    - compute.googleapis.com/RegionDisk
+    - compute.googleapis.com/Route
+    - compute.googleapis.com/Router
+    - compute.googleapis.com/SecurityPolicy
+    - compute.googleapis.com/Snapshot
+    - compute.googleapis.com/SslCertificate
+    - compute.googleapis.com/Subnetwork
+    - compute.googleapis.com/TargetHttpProxy
+    - compute.googleapis.com/TargetHttpsProxy
+    - compute.googleapis.com/TargetInstance
+    - compute.googleapis.com/TargetPool
+    - compute.googleapis.com/TargetSslProxy
+    - compute.googleapis.com/TargetTcpProxy
+    - compute.googleapis.com/TargetVpnGateway
+    - compute.googleapis.com/UrlMap
+    - compute.googleapis.com/VpnTunnel
+    - container.googleapis.com/Cluster
+    - container.googleapis.com/NodePool
+    - datafusion.googleapis.com/Instance
+    - dataproc.googleapis.com/Cluster
+    - dataproc.googleapis.com/Job
+    - dns.googleapis.com/ManagedZone
+    - dns.googleapis.com/Policy
+    - extensions.k8s.io/Ingress
+    - iam.googleapis.com/Role
+    - iam.googleapis.com/ServiceAccount
+    - iam.googleapis.com/ServiceAccountKey
+    - k8s.io/Namespace
+    - k8s.io/Node
+    - k8s.io/Pod
+    - k8s.io/Service
+    - networking.k8s.io/Ingress
+    - pubsub.googleapis.com/Subscription
+    - pubsub.googleapis.com/Topic
+    - rbac.authorization.k8s.io/ClusterRole
+    - rbac.authorization.k8s.io/ClusterRoleBinding
+    - rbac.authorization.k8s.io/Role
+    - rbac.authorization.k8s.io/RoleBinding
+    - serviceusage.googleapis.com/Service
+    - spanner.googleapis.com/Database
+    - spanner.googleapis.com/Instance
+    - sqladmin.googleapis.com/Instance
+    - storage.googleapis.com/Bucket
+    resources:
+    - appengine.googleapis.com/Application
+    - appengine.googleapis.com/Service
+    - bigquery.googleapis.com/Dataset
+    - bigtableadmin.googleapis.com/Instance
+    - cloudkms.googleapis.com/CryptoKey
+    - cloudresourcemanager.googleapis.com/Folder
+    - cloudresourcemanager.googleapis.com/Organization
+    - cloudresourcemanager.googleapis.com/Project
+    - compute.googleapis.com/Disk
+    - compute.googleapis.com/Firewall
+    - compute.googleapis.com/ForwardingRule
+    - compute.googleapis.com/GlobalForwardingRule
+    - compute.googleapis.com/Instance
+    - compute.googleapis.com/Network
+    - compute.googleapis.com/Project
+    - compute.googleapis.com/Snapshot
+    - compute.googleapis.com/SslCertificate
+    - compute.googleapis.com/Subnetwork
+    - container.googleapis.com/Cluster
+    - dataproc.googleapis.com/Cluster
+    - dataproc.googleapis.com/Job
+    - dns.googleapis.com/ManagedZone
+    - iam.googleapis.com/ServiceAccount
+    - iam.googleapis.com/ServiceAccountKey
+    - serviceusage.googleapis.com/Service
+    - spanner.googleapis.com/Instance
+    - sqladmin.googleapis.com/Instance
+    - storage.googleapis.com/Bucket
