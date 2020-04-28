@@ -4,6 +4,15 @@ Real-time Asset Monitor configuration template to be cloned and adapted to your 
 
 ## Clone this repo to initialize your RAM configuration repo
 
+- Why?
+  - With RAM you can customize compliance rules to match your specific need
+  - So, a git repo is needed to keep tracks of your own configuration adaptations
+  - Instead of starting from a blank page, this `ram-config-template` offers you a ready to use starting point
+- What?
+  - Just clone this repo to initiate your own
+- How?
+  - [Cloning a GitHub repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+
 ## Review adapt settings
 
 - In `./solution.yaml` adapt at least
@@ -21,6 +30,7 @@ Real-time Asset Monitor configuration template to be cloned and adapted to your 
     - REGO template
     - YAML constrains files
   - create additional compliance rules as needed
+- Once settings are tailored to your context do not forget to commit changes in your git repo
 
 ## Install GO
 
@@ -40,7 +50,17 @@ run `ram` with no arguments to see available options
 
 ## Complete manual setup task
 
-The list of nanual tasks to complete has been listed by `ram-init`
+- The list of nanual tasks to complete has been listed by `ram-init`
+- More info about RAM cloud source repo
+  - RAM Continuous Deployment pipeline uses the git repo you have set in `solution.yaml` as it source of truth
+  - This repo is hosted in each of you RAM GCP projects (dev, prd ...) using Google Cloud Source
+  - So, how to synchonize the local git repo initiate at the begining with Cloud Source ?
+    - This is the purpose of the manual step number 3 listed at the end of the `ram -init` step
+    - Several options:
+      - Option 1: [Push the local repo directly to Cloud Source](https://cloud.google.com/source-repositories/docs/pushing-code-from-a-repository)
+      - Option 2: Use an external git repo hosting provider, like GitHub or Bitbucket
+        - First, push the local repo to the external provider platform
+        - Then, [mirror from the external provider into Cloud Source](https://cloud.google.com/source-repositories/docs/mirroring-repositories)
 
 ## Make cloud build triggers
 
