@@ -2,6 +2,10 @@
 
 Real-time Asset Monitor configuration template to be cloned and adapted to your environment
 
+## Clear pre-requisites
+
+Folder, group, service account and permission pre-requisites are described [HERE](docs/pre_requisites.md)
+
 ## Clone this repo to initialize your RAM configuration repo
 
 - Why?
@@ -81,7 +85,7 @@ run `ram` with no arguments to see available options
   - You just install RAM and need a first assessment
   - You change rules
 - How to?
-- console / cloud scheduler / Jobs / Start now 
+- console / cloud scheduler / Jobs / Start now
 
 ## Review compliance results
 

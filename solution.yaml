@@ -13,6 +13,9 @@
 # limitations under the License.
 #
 hosting:
+  organizationIDs:
+    dev: "<ORG-ID of the organization hosting RAM dev envrironment>"
+    <additional environment name>: "<ORG-ID of the organization hosting this RAM envrironment>"
   billingAccountID: <YOUR-BILLING-ACCOUNT-ID>
   folderIDs:
     dev: "<FOLDER-ID of the folder that contains RAM dev project>"
