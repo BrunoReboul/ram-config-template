@@ -39,29 +39,38 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 
 #### `ram_cli_folder_core`
 
-- cloudbuild.builds.create
-- cloudbuild.builds.get
-- cloudbuild.builds.list
-- source.repos.create
-- source.repos.get
+- `cloudbuild.builds.create`
+- `cloudbuild.builds.get`
+- `cloudbuild.builds.list`
+- `source.repos.create`
+- `source.repos.get`
 
 #### `ram_cli_folder_extended`
 
-- iam.roles.create
-- iam.roles.get
-- iam.roles.update
-- iam.serviceAccounts.create
-- iam.serviceAccounts.get
-- iam.serviceAccounts.getIamPolicy
-- iam.serviceAccounts.setIamPolicy
-- resourcemanager.folders.get
-- resourcemanager.projects.create
-- resourcemanager.projects.createBillingAssignment
-- resourcemanager.projects.get
-- resourcemanager.projects.getIamPolicy
-- resourcemanager.projects.setIamPolicy
-- serviceusage.services.enable
-- serviceusage.services.list
+- `iam.roles.create`
+- `iam.roles.get`
+- `iam.roles.update`
+- `iam.serviceAccounts.create`
+- `iam.serviceAccounts.get`
+- `iam.serviceAccounts.getIamPolicy`
+- `iam.serviceAccounts.setIamPolicy`
+- `resourcemanager.folders.get`
+- `resourcemanager.projects.create`
+- `resourcemanager.projects.createBillingAssignment`
+- `resourcemanager.projects.get`
+- `resourcemanager.projects.getIamPolicy`
+- `resourcemanager.projects.setIamPolicy`
+- `serviceusage.services.enable`
+- `serviceusage.services.list`
+
+#### `ram_cli_monitoring_org_extended`
+
+- `iam.roles.create`
+- `iam.roles.get`
+- `iam.roles.list`
+- `iam.roles.update`
+- `resourcemanager.organizations.getIamPolicy`
+- `resourcemanager.organizations.setIamPolicy`
 
 #### Billing account scope role binding
 
