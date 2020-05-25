@@ -90,3 +90,20 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 Cloud Asset Inventory requires it:
 
 `rpc error: code = PermissionDenied desc = Your application has authenticated using end user credentials from the Google Cloud SDK or Google Cloud Shell which are not supported by the cloudasset.googleapis.com. We recommend configuring the billing/quota_project setting in gcloud or using a service account through the auth/impersonate_service_account setting. For more information about service accounts and how to use them in your application, see https://cloud.google.com/docs/authentication/.`
+
+## Domain Wide Delegation
+
+Manually configure domain wide delegation from GCP console for the following service accounts. Give them the Oauth scopes as described below from admin.google.com console.
+
+### listgroups service account
+
+- `https://www.googleapis.com/auth/admin.directory.group.readonly`
+- `https://www.googleapis.com/auth/admin.directory.domain.readonly`
+
+### listgroupmembers service account
+
+- `https://www.googleapis.com/auth/admin.directory.group.member.readonly`
+
+### getgroupsettings service account
+
+- `https://www.googleapis.com/auth/admin.directory.group.member.readonly`
