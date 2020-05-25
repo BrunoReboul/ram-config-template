@@ -16,11 +16,14 @@ To use ram cli the team setup the environment variable [GOOGLE_APPLICATION_CREDE
 - Scope: on RAM folder
 - Roles
   - `roles/viewer`
-  - To manually setup firebase native mode, could be expired with a time condition
+  - To manually setup firebase native mode, to give domain wide delegation could be expired with a time condition
     - `roles/datastore.owner` datastore permission are not supported in custom roles
     - Custom role to carry permissions
     - `appengine.applications.create`
     - `storage.buckets.create`
+    - `servicemanagement.services.bind`
+    - `iam.serviceAccounts.update`
+    - `clientauthconfig.clients.update`
     - `servicemanagement.services.bind`
   - To manually setup Stackdriver workspace
     - `roles/stackdriver.accounts.editor` several stackdriver permissions (get, edit) are not supported in custom roles
