@@ -30,11 +30,11 @@ Folder, group, service account and permission pre-requisites are described [HERE
     - organizationIDs
     - directoryCustomerIDs and associates super admin emails
     - Keep list group scheduler different from other scheduler (do NOT mutualize) as the associated topic is used recursively to scale GCP queries
-- In `./services/monitorcompliance/instances`
-  - review, adapt each compliance rule
+- In `./services/monitor/instances`
+  - This folder contains ready to run rules. Review, and may be adapt
     - REGO template
     - YAML constrains files
-  - create additional compliance rules as needed
+  - create additional compliance rules as needed, use additional examples from `./examples`
 - Once settings are tailored to your context do not forget to commit changes in your git repo
 
 ## Install GO
@@ -48,10 +48,21 @@ Folder, group, service account and permission pre-requisites are described [HERE
 
 `go build ram.go`
 
+## Set GOOGLE_APPLICATION_CREDENTIALS environment variable
+
+Recommended:
+
+Set GOOGLE_APPLICATION_CREDENTIALS envrionment variable to the ram cli service account prepared as described in the [pre requsistes]((docs/pre_requisites.md)) so ram cli will be run for the following step using this identity.
+
+Quick and dirty:
+
+You just want to explore `ram` in a sandbox environment and to not want to spend time in clearing the pre-reauisites (custom roles, team group, service account ...).
+Create a folder for `ram` and follow the next steps using a user account with full accesses to your sandbox GCP organization resources and GCI directory.
+
 ## Initialize setup
 
-`ram -init`  
-run `ram` with no arguments to see available options
+- `ram -init`
+- run `ram` with no arguments to see available options
 
 ## Complete manual setup task
 
@@ -67,9 +78,13 @@ run `ram` with no arguments to see available options
         - First, push the local repo to the external provider platform
         - Then, [mirror from the external provider into Cloud Source](https://cloud.google.com/source-repositories/docs/mirroring-repositories)
 
-## Make cloud build triggers
+## Create microservices instances yaml configuration files
 
-- `ram -make-trigger`
+- `ram -config`
+
+## Make cloud build release pipelines
+
+- `ram -pipe`
 - Check results in console / cloud build / triggers
 
 ## Tag to deploy RAM microservices instances
@@ -78,6 +93,9 @@ run `ram` with no arguments to see available options
   - example `git tag -a ram-v0.0.1-dev -m "initial deployment"`
 - `git push --tags`
 - Check results in console / cloud build / history
+  - Specifc manual operations to finalise `listgroups` `listgroupmembers` `getgroupsettings` deployment
+    - Configure DwD Domain wide delegation fronm GCP console on the 3 related service accounts
+    - Configure Oauth scopes from the admin.google.com console. Scopes for each service accounts are list in deploment log or in [pre-requsites]((docs/pre_requisites.md))
 
 ## Manually trigger an initial compliance assessment
 

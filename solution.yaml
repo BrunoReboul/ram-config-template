@@ -60,11 +60,26 @@ hosting:
 monitoring:
   organizationIDs:
   - "<your GCP organization ID, add multiple lines if needed>"
-  directoryCustomerIDs:
-    <your directory customer ID>: <the email address of the super admin to impersonate>
   labelKeyNames:
     owner: owner
     violationResolver: resolver
+  defaultSchedulers:
+    dev:
+      jobName: every-year-at-00-00-on-january-1st
+      schedule: 0 0 1 1 *
+    prd:
+      jobName: every-monday-at-02am10
+      schedule: 10 2 * * 1
+  directoryCustomerIDs:
+    <your first directory customer ID>:
+      superAdminEmail: <superadmin email to be impersonated in this directory>
+  listGroupsDefaultSchedulers:
+    dev:
+      jobName: listgroups-every-year-at-00-00-on-january-1st
+      schedule: 0 0 1 1 *
+    prd:
+      jobName: listgroups-every-monday-at-02am10
+      schedule: 10 2 * * 1
   assetTypes:
     iamPolicies:
     - appengine.googleapis.com/Application
