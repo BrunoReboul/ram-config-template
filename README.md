@@ -28,7 +28,8 @@ Folder, group, service account and permission pre-requisites are described [HERE
     - buckets names
   - monitoring
     - organizationIDs
-    - directoryCustomerIDs
+    - directoryCustomerIDs and associates super admin emails
+    - Keep list group scheduler different from other scheduler (do NOT mutualize) as the associated topic is used recursively to scale GCP queries
 - In `./services/monitorcompliance/instances`
   - review, adapt each compliance rule
     - REGO template
