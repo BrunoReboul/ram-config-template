@@ -81,6 +81,7 @@ Create a folder for `ram` and follow the next steps using a user account with fu
 ## Create microservices instances yaml configuration files
 
 - `ram -config`
+- Review added configurations in `services` folder, per service subfolders
 
 ## Make cloud build release pipelines
 
