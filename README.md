@@ -117,7 +117,7 @@ Create a folder for `ram` and follow the next steps using a user account with fu
 
 Several options:
 
-- Use DataStudio template
+- Query BigQuery views from the console as a smoke test
+- Use [Data Studio template](https://datastudio.google.com/reporting/467c7ff1-7220-4de9-a0fe-536bdad7aee1) and follow the README instructions embeeded in the report template
 - Use your own dashboarding tool (need BigQuery connector)
-- Query BigQuery views from the console
-- Integrate compliance result directly in your applications
+- Integrate compliance result directly in your applications using BigQuery APIs
