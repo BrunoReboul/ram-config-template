@@ -32,3 +32,15 @@ Console / API / Cloud Build API / Quotas / Concurrent builds.
 Default quota is 10.  
 Running all RAM deployments in parallel (+150) takes arround 1 hour with the default 10 concurrent builds.  
 You may be interrested to request a higher quotas to speedup a full deployment, specially if you contribute to RAM development effort and redeploy everything on a regular basis for dev testing purposes.
+
+### Cloud Function build time in seconds per day
+
+Quota exceeded for quota group 'BuildTime' and limit 'Functions build time in seconds per day' of service 'cloudfunctions.googleapis.com'  
+Console / API / Cloud Function API / Quotas / Function buildtime in seconds per day  
+According to documentation the default quotas for [Max build time](https://cloud.google.com/functions/quotas#time_limits) is 120 minutes, 2 hours, per project.  
+When installing RAM this quota appears to be automaticcaly increased to 36 000 seconds, 10 hours, so 5x times more.  
+36 000 seconds is the maximun requestable value.  
+From data available in Cloud Build build logs, step 3 takes 2 to 3 minutes. It includes prerequistes task and cloud function deployment. So using 3 minutes as the build time for a cloud function is conservative.  
+600 min daily quota / 3 min = 200 cloud function deploymenta a day.  
+RAM has arround 130 cloud functions depending on the number of rules and asset to monitor.  
+So it is ok to redeploy all one a day.
