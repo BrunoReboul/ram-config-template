@@ -44,3 +44,11 @@ From data available in Cloud Build build logs, step 3 takes 2 to 3 minutes. It i
 600 min daily quota / 3 min = 200 cloud function deploymenta a day.  
 RAM has arround 130 cloud functions depending on the number of rules and asset to monitor.  
 So it is ok to redeploy all one a day.
+
+## publish2fs logs
+
+### `An internal error occurred` on SET document
+
+Probably a transient from Firestore.  
+Filter logs on `textPayload:"<the folder or project ID>"`
+This will list all re retry for a given asset an eventually the success after the transients
