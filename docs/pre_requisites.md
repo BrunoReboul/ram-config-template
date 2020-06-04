@@ -109,4 +109,4 @@ Manually configure domain wide delegation from GCP console for the following ser
 
 ### getgroupsettings service account
 
-- `https://www.googleapis.com/auth/admin.directory.group.member.readonly`
+- `https://www.googleapis.com/auth/apps.groups.settings`

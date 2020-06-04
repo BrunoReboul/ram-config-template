@@ -14,7 +14,7 @@
 #
 hosting:
   organizationIDs:
-    dev: "<ORG-ID of the organization hosting RAM dev envrironment>"
+    dev: "<ORG-ID of the organization hosting RAM dev environment>"
     <additional environment name>: "<ORG-ID of the organization hosting this RAM envrironment>"
   billingAccountID: <YOUR-BILLING-ACCOUNT-ID>
   folderIDs:
