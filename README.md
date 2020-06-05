@@ -98,7 +98,7 @@ Create a folder for `ram` and follow the next steps using a user account with fu
 - This step takes about an hour for +150 builds to run by 10 in parallel (default quota, default cloud build instance)
 - Check results in console / cloud build / history
   - A few builds may failed (e.g. on github timeout), just hit the `retry` button
-  - Specifc manual operations to finalise `listgroups` `listgroupmembers` `getgroupsettings` deployment
+  - Specific manual operations to finalise `listgroups` `listgroupmembers` `getgroupsettings` deployment
     - Configure DwD Domain wide delegation fronm GCP console on the 3 related service accounts
     - Configure Oauth scopes from the admin.google.com console. Scopes for each service accounts are list in deploment log or in [pre-requsites]((docs/pre_requisites.md))
 - Check results also in console / functions

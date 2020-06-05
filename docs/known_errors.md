@@ -45,6 +45,10 @@ From data available in Cloud Build build logs, step 3 takes 2 to 3 minutes. It i
 RAM has arround 130 cloud functions depending on the number of rules and asset to monitor.  
 So it is ok to redeploy all one a day.
 
+### Cloud build triggers
+
+Default 300 triggers per projects. May be upgraded to 500.
+
 ## publish2fs logs
 
 ### `An internal error occurred` on SET document
