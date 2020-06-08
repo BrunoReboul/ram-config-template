@@ -49,6 +49,12 @@ So it is ok to redeploy all one a day.
 
 Default 300 triggers per projects. May be upgraded to 500.
 
+### CPU allocation in function invocation for 'region-zone' per 100 seconds
+
+Console / API / Functions / Quotas / CPU Allocation in functions invocations.
+Quotas hit during large export processing. Not for near realtime processing,
+Retries handles the errors over the 100 sec window. To avoid extra cost due to retry, request a higher quota.
+
 ## publish2fs logs
 
 ### `An internal error occurred` on SET document
