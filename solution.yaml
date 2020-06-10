@@ -54,6 +54,8 @@ hosting:
       IAMPolicies: cai-iam-policies
       RAMViolation: ram-violations
       RAMComplianceStatus: ram-complianceStatus
+      GCIGroupMembers: gci-groupMembers
+      GCIGroupSettings: gci-groupSettings
   firestore:
     collectionIDs:
       assets: assets
