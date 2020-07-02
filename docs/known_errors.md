@@ -62,3 +62,14 @@ Retries handles the errors over the 100 sec window. To avoid extra cost due to r
 Probably a transient from Firestore.  
 Filter logs on `textPayload:"<the folder or project ID>"`
 This will list all re retry for a given asset an eventually the success after the transients
+
+## convertlog2feed
+
+### Some actions are not advertised in Admin Activity Report Event
+
+Missing:
+
+- When a user (or other secruity principal) is deleted, there is not event to notify the groups it is member of have changed
+- Changing a group primary email address leads to NO events
+
+In consequences these events are not cached by RAM, leading to potential orphan violations.
