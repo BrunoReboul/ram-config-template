@@ -71,6 +71,7 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 - `iam.roles.get`
 - `iam.roles.list`
 - `iam.roles.update`
+- `resourcemanager.organizations.get`
 - `resourcemanager.organizations.getIamPolicy`
 - `resourcemanager.organizations.setIamPolicy`
 
