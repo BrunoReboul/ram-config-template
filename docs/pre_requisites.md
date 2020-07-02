@@ -7,9 +7,9 @@ To contain RAM projects, ussually one per environment.
 ## 2 Create a group and grant permissions
 
 This group materialize the team in charge of RAM.
-The team will have to perform a few manual operations from the console as they are not automatable. To do so the group is granted with permissions described in [this section](###assign-roles-to-RAM-team-group).
+The team will have to perform a few manual operations from the console as they are not automatable. To do so the group is granted with permissions described in [this section](#assign-roles-to-RAM-team-group).
 
-To use ram cli the team setup the environment variable [GOOGLE_APPLICATION_CREDENTIALS](https://cloud.google.com/docs/authentication/production) on the service account describe in [this section](##3-create-RAM-Cli-service-account). This service account have the permissions required to run ram cli, so the team does no need nor have them.
+To use ram cli the team setup the environment variable [GOOGLE_APPLICATION_CREDENTIALS](https://cloud.google.com/docs/authentication/production) on the service account describe in [this section](#3-create-RAM-Cli-service-account). This service account have the permissions required to run ram cli, so the team does no need nor have them.
 
 ### Assign roles to RAM team group
 
@@ -24,7 +24,6 @@ To use ram cli the team setup the environment variable [GOOGLE_APPLICATION_CREDE
     - `servicemanagement.services.bind`
     - `iam.serviceAccounts.update`
     - `clientauthconfig.clients.update`
-    - `servicemanagement.services.bind`
   - To manually setup Stackdriver workspace
     - `roles/stackdriver.accounts.editor` several stackdriver permissions (get, edit) are not supported in custom roles
   - To create a connected source repo and manage it

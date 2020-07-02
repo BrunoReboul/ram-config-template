@@ -52,7 +52,7 @@ Folder, group, service account and permission pre-requisites are described [HERE
 
 Recommended:
 
-Set GOOGLE_APPLICATION_CREDENTIALS envrionment variable to the ram cli service account prepared as described in the [pre requsistes]((docs/pre_requisites.md)) so ram cli will be run for the following step using this identity.
+Set GOOGLE_APPLICATION_CREDENTIALS envrionment variable to the ram cli service account prepared as described in the [pre requsistes](docs/pre_requisites.md) so ram cli will be run for the following step using this identity.
 
 Quick and dirty:
 
