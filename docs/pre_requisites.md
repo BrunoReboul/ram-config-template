@@ -96,10 +96,19 @@ Cloud Asset Inventory requires it:
 
 `rpc error: code = PermissionDenied desc = Your application has authenticated using end user credentials from the Google Cloud SDK or Google Cloud Shell which are not supported by the cloudasset.googleapis.com. We recommend configuring the billing/quota_project setting in gcloud or using a service account through the auth/impersonate_service_account setting. For more information about service accounts and how to use them in your application, see https://cloud.google.com/docs/authentication/.`
 
+## Export gSuite activity logs to GCP organization
+
+This step is required to enable near real-time analyis of group changes.  
+From gSuite admin console, Company profile / Legal / Sharing option / Enable.  
+Doc: [Share data with Google Cloud Platform services - G Suite Admin Help](https://support.google.com/a/answer/9320190)
+
 ## Domain Wide Delegation
 
 When to perform theses tasks? After creating the builds (ram -pipe) so the services accounts for the cloud functions have been created for the services listed below.  
-Manually configure domain wide delegation from GCP console for the following service accounts. Give them the Oauth scopes as described below from admin.google.com console.
+Manually configure domain wide delegation from GCP console for the following service accounts. Give them the Oauth scopes as described below from admin.google.com console.  
+
+From GCP console for earch service account enable domain wide delegation and keep track of their account IDs.  
+From gSuite Admin console / Security / API management / Domain wide delegation, grant to the service accounts the following scopes using their account IDs.
 
 ### listgroups service account
 
