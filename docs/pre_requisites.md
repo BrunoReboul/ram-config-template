@@ -55,6 +55,7 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 - `iam.serviceAccounts.create`
 - `iam.serviceAccounts.get`
 - `iam.serviceAccounts.getIamPolicy`
+- `iam.serviceAccounts.list`
 - `iam.serviceAccounts.setIamPolicy`
 - `resourcemanager.folders.get`
 - `resourcemanager.projects.create`
@@ -63,6 +64,7 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 - `resourcemanager.projects.getIamPolicy`
 - `resourcemanager.projects.setIamPolicy`
 - `serviceusage.services.enable`
+- `serviceusage.services.get`
 - `serviceusage.services.list`
 
 #### `ram_cli_monitoring_org_extended`
@@ -96,6 +98,7 @@ Cloud Asset Inventory requires it:
 
 ## Domain Wide Delegation
 
+When to perform theses tasks? After creating the builds (ram -pipe) so the services accounts for the cloud functions have been created for the services listed below.  
 Manually configure domain wide delegation from GCP console for the following service accounts. Give them the Oauth scopes as described below from admin.google.com console.
 
 ### listgroups service account
@@ -109,4 +112,9 @@ Manually configure domain wide delegation from GCP console for the following ser
 
 ### getgroupsettings service account
 
+- `https://www.googleapis.com/auth/apps.groups.settings`
+
+### convertlog2feed service account
+
+- `https://www.googleapis.com/auth/admin.directory.group.readonly`
 - `https://www.googleapis.com/auth/apps.groups.settings`
