@@ -55,6 +55,27 @@ Console / API / Functions / Quotas / CPU Allocation in functions invocations.
 Quotas hit during large export processing. Not for near realtime processing,
 Retries handles the errors over the 100 sec window. To avoid extra cost due to retry, request a higher quota.
 
+## Cloud Build
+
+### log not ready
+
+message type: `invalid logs bucket "gs://<number>.cloudbuild-logs.googleusercontent.com": builder service account does not have access to logs bucket "<number>.cloudbuild-logs.googleusercontent.com"`  
+Deploy starts while cloud build internal bucket for log was not yet ready, or permission not yet ready.  
+Should occurs only on the very first wave of builds.  
+Just retry the failed build.  
+Mitigation: fire only one build, then fire all builds.  
+
+### back end error
+
+Error 503 backend error when running `./ram -pipe`  
+Transient, retry.
+
+## IAM
+
+Running `./ram -pipe`  
+Error 404 service account not found on service account creation operation.  
+Transient, wait and retry.
+
 ## publish2fs logs
 
 ### `An internal error occurred` on SET document
