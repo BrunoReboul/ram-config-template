@@ -1,6 +1,7 @@
 # ram-config-template
 
-Real-time Asset Monitor configuration template to be cloned and adapted to your environment
+Real-time Asset Monitor configuration template to be cloned and adapted to your environment.  
+[Product overview](docs/product_overview.md)
 
 ## Clear pre-requisites
 
@@ -121,3 +122,9 @@ Several options:
 - Use [Data Studio template](https://datastudio.google.com/reporting/467c7ff1-7220-4de9-a0fe-536bdad7aee1) and follow the README instructions embeeded in the report template
 - Use your own dashboarding tool (need BigQuery connector)
 - Integrate compliance result directly in your applications using BigQuery APIs
+
+## What's next
+
+[FAQ](docs/FAQ.md)  
+[Known errors](docs/known_errors.md)  
+[RAM microservice packages on go.dev](https://pkg.go.dev/github.com/BrunoReboul/ram)
