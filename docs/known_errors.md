@@ -2,7 +2,17 @@
 
 ## Invalid JWT signature
 
+### Case one: scope not yet effective
+
 This error description may be found in `listgroups`, `listgroupmembers` and `getgroupsettings` logs. It may take several hours (24 ?) to get the configured Oauth scopes for Domain-wide delegation DwD from admin.google.com console to be effective.
+
+### case two: convertlog2feed
+
+Convertlog2feed runs constantly as it is a near realtime service when deploy on a large gSuite directory. In consequence the function cold start is executed multiple times per minutes. The cold start contain a servie account key clean up mecanism that delete all the non system key but the active one.
+
+What if convert2log is redeployed while it is still actice? Then, cloud build create a new key (to automate key rotation) that is killed by the active cloud function before the new version is deployed (2 minutes time frame). This issue does not show up on test environment where the real time traffic is too low.
+
+Work arround: delete the current convertlog2feed cloud function before re deploying it, at the cost of lossing some real time events. This will be covered by the next scheduled export.
 
 ## dumpinventory or splitdump deployment: Error 409: Sorry, that name is not available. Please try a different one., conflict
 

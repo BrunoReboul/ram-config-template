@@ -35,3 +35,8 @@ Yes, each compliance rule is an instance of `monitor-compliance` microservice. I
   - Settings have bien situated:
     - craft some settings from others, like composed names
     - take the environment in account, like dev or production
+
+## **How to find the Directory Customer ID associated with a GCP organization`?`**
+
+`gcloud organizations list`  
+Directory customer IDs are used in solution.yaml
