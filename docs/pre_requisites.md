@@ -76,6 +76,9 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 - `resourcemanager.organizations.get`
 - `resourcemanager.organizations.getIamPolicy`
 - `resourcemanager.organizations.setIamPolicy`
+- `cloudasset.feeds.list`
+- `cloudasset.feeds.get`
+- `cloudasset.feeds.delete`
 
 #### Billing account scope role binding
 
