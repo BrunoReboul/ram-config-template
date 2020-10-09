@@ -1,4 +1,4 @@
-# How to deploy Realt-ime Asset Monitor
+# How to deploy Real-time Asset Monitor
 
 ## How to upgrade multiple environments to a new RAM release
 
