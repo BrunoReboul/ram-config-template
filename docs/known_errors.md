@@ -75,11 +75,6 @@ Should occurs only on the very first wave of builds.
 Just retry the failed build.  
 Mitigation: fire only one build, then fire all builds.  
 
-### back end error
-
-Error 503 backend error when running `./ram -pipe`  
-Transient, retry.
-
 ## IAM
 
 Running `./ram -pipe`  
