@@ -18,3 +18,4 @@ settings.yaml
 go.sum
 ram
 cloud_function_source.zip
+services/monitor/constraints.yaml
