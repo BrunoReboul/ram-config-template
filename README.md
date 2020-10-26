@@ -90,6 +90,7 @@ Create a folder for `ram` and follow the next steps using a user account with fu
 - `ram -pipe`
 - This step takes about 15 minutes
 - Check results in console / cloud build / triggers
+- `ram -pipe -check` to check each cloud build trigger has been deployed and configured as specified in the yaml code
 
 ## Tag to deploy RAM microservices instances
 
@@ -97,7 +98,8 @@ Create a folder for `ram` and follow the next steps using a user account with fu
   - example `git tag -a ram-v0.0.1-dev -m "initial deployment"`
 - `git push --tags`
 - This step takes about an hour for +150 builds to run by 10 in parallel (default quota, default cloud build instance)
-- Check results in console / cloud build / history
+- `ram -deploy -check` to check each microservice instance has been deployed and configured as specified in the yaml code
+- Check also results in console / cloud build / history
   - A few builds may failed (e.g. on github timeout), just hit the `retry` button
   - Specific manual operations to finalise `listgroups` `listgroupmembers` `getgroupsettings` deployment
     - Configure DwD Domain wide delegation fronm GCP console on the 3 related service accounts
