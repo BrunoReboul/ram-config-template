@@ -18,8 +18,10 @@ kind: GCPGKERestrictClientAuthenticationMethodsConstraintV1
 metadata:
   name: gke_client_auth_method
   annotations:
+    category: Identity and Access Management
     description: Client certificate or static password authentication is forbidden in GKE clusters.
 spec:
   severity: major
   match:
     target: ["organization/"]
+    exclude:

@@ -17,6 +17,7 @@ kind: GCPIAMMembersConstraintV1
 metadata:
   name: no_domains_grants
   annotations:
+    category: Identity and Access Management
     description: Grants to domains in IAM are forbidden.
 spec:
   severity: major
@@ -25,6 +26,5 @@ spec:
     exclude:
   parameters:
     mode: blacklist
-    members: 
-    - domain:**
-    
+    members:
+      - domain:**

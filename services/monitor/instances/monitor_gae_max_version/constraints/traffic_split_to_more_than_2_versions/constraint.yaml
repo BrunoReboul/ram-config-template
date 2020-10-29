@@ -17,10 +17,12 @@ kind: GCPAppEngineServiceVersionsConstraintV1
 metadata:
   name: traffic_split_to_more_than_2_versions
   annotations:
+    category: Debt Management
     description: GAE applications' services should not have more than 2 versions.
 spec:
   severity: medium
   match:
     target: ["organization/"]
+    exclude:
   parameters:
     max_versions: 2

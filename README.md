@@ -31,11 +31,18 @@ Folder, group, service account and permission pre-requisites are described [HERE
     - organizationIDs
     - directoryCustomerIDs and associates super admin emails
     - Keep list group scheduler different from other scheduler (do NOT mutualize) as the associated topic is used recursively to scale GCP queries
+
+## Customize compliance rules
+
+RAM complement other GCP compliance tools by brining the ability to define **custom rules**, so it is time to customize :-)
+
 - In `./services/monitor/instances`
-  - This folder contains ready to run rules. Review, and may be adapt
-    - REGO template
-    - YAML constrains files
-  - create additional compliance rules as needed, use additional examples from `./examples`
+  - This folder contains rules as REGO code and `constraints.yaml` settings to be reviewed, and adapted
+    - `target` and `exclude` lists enable to define the relevant scope in your GCP hierarchy for each rule
+    - `exemptions` lists enable to whitelist specific assets when available
+    - Several settings need to be adapted like all rules related to **data sovereignty**
+      - A search in this folder for the string `to_be_adapted` will directly point you to them
+  - create additional compliance rules as needed
 - Once settings are tailored to your context do not forget to commit changes in your git repo
 
 ## Install GO

@@ -18,8 +18,10 @@ kind: GCPSQLMaintenanceWindowConstraintV1
 metadata:
   name: cloudsql_maintenance
   annotations:
+    category: Database Security
     description: CloudSQL Instances must have a maintenance schedule.
 spec:
-  severity: low
+  severity: minor
   match:
     target: ["organization/"]
+    exclude:

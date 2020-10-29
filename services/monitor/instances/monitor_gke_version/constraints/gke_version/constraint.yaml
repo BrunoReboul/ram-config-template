@@ -18,11 +18,13 @@ kind: GCPGKEVersionConstraintV1
 metadata:
   name: gke_version
   annotations:
+    category: Debt Management
     description: Only up-to-date version are allowed.
 spec:
-  severity: low
+  severity: minor
   match:
     target: [organization/]
+    exclude:
   parameters:
     master_versions: "1.14.10"
     node_versions: "1.14.10"

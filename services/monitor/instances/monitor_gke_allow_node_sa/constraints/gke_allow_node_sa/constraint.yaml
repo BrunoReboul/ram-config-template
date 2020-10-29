@@ -18,8 +18,10 @@ kind: GCPGKEAllowedNodeSAConstraintV1
 metadata:
   name: gke_allow_node_sa
   annotations:
-    description: Adding OAuth scope to SA for Node VM is forbidden in GKE clusters.
+    category: Identity and Access Management
+    description: OAuth scope is fordiden on the service account used with GKE nodePools.
 spec:
   severity: medium
   match:
     target: [organization/]
+    exclude:

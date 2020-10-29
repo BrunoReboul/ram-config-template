@@ -19,11 +19,13 @@ kind: GCPComputeExternalIpAccessConstraintV1
 metadata:
   name: gce_external_ip
   annotations:
+    category: Infrastructure Hardening
     description: External IPs for GCE VMs are forbidden.
 spec:
   severity: major
   match:
     target: [organization/]
+    exclude:
   parameters:
     # modes can be [whitelist, blacklist]
     mode: blacklist

@@ -18,8 +18,10 @@ kind: GCPGKEDashboardConstraintV1
 metadata:
   name: gke_dashboard
   annotations:
+    category: Infrastructure Hardening
     description: GKE Dashboard must be disabled.
 spec:
   severity: major
   match:
     target: ["organization/"]
+    exclude:

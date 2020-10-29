@@ -18,8 +18,10 @@ kind: GCPSQLBackupConstraintV1
 metadata:
   name: cloudsql_backup
   annotations:
+    category: Database Security
     description: CloudSQL instances must have a backup schedule.
 spec:
   severity: major
   match:
     target: ["organization/"]
+    exclude:

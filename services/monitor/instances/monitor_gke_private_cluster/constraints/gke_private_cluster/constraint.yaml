@@ -18,8 +18,10 @@ kind: GCPGKEPrivateClusterConstraintV1
 metadata:
   name: gke_private_cluster
   annotations:
+    category: Infrastructure Hardening
     description: GKE Clusters must be Private.
 spec:
   severity: major
   match:
     target: ["organization/"]
+    exclude:
