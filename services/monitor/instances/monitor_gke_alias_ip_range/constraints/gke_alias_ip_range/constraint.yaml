@@ -18,8 +18,10 @@ kind: GCPGKEEnableAliasIPRangesConstraintV1
 metadata:
   name: gke_alias_ip_range
   annotations:
-    description: GKE clusters must use VPC in native mode.
+    category: Infrastructure Hardening
+    description: GKE clusters must be VPC-native cluster, aka using alias IP address ranges.
 spec:
   severity: medium
   match:
     target: ["organization/"]
+    exclude:

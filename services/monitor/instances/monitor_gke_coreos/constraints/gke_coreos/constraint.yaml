@@ -18,8 +18,10 @@ kind: GCPGKEContainerOptimizedOSConstraintV1
 metadata:
   name: gke_coreos
   annotations:
+    category: Infrastructure Hardening
     description: GKE Clusters' Nodes with OS image other than COS are forbidden.
 spec:
   severity: medium
   match:
     target: ["organization/"]
+    exclude:

@@ -17,7 +17,8 @@ kind: GCPIAMRestrictServiceAccountKeyAgeConstraintV1
 metadata:
   name: iam_sa_key_age
   annotations:
-    description: Service Accounts key should not be older than 100 days.
+    category: Debt Management
+    description: Service Accounts keys should not be older than 100 days.
 spec:
   severity: medium
   match:

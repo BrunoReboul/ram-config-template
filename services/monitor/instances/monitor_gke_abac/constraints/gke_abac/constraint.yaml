@@ -17,8 +17,10 @@ kind: GCPGKELegacyAbacConstraintV1
 metadata:
   name: gke_abac
   annotations:
+    category: Identity and Access Management
     description: Legacy ABAC for GKE clusters is forbidden.
 spec:
-  severity: low
+  severity: minor
   match:
     target: [organization/]
+    exclude:

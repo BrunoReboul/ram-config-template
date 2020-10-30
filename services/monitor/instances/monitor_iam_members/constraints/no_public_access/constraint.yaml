@@ -15,9 +15,10 @@
 apiVersion: constraints.gatekeeper.sh/v1alpha1
 kind: GCPIAMMembersConstraintV1
 metadata:
-  name: no_public_access
+  name: no_public_access_bq_dataset_gcs_bucket
   annotations:
-    description: Public access to Dataset or GCS Buckets are forbidden.
+    category: Identity and Access Management
+    description: Public access to BQ Datasets and GCS Buckets are forbidden.
 spec:
   severity: major
   match:
@@ -25,9 +26,9 @@ spec:
     exclude:
   parameters:
     mode: blacklist
-    members: 
-    - allAuthenticatedUsers
-    - allUsers
+    members:
+      - allAuthenticatedUsers
+      - allUsers
     assettypes:
-    - bigquery.googleapis.com/Dataset
-    - storage.googleapis.com/Bucket
+      - bigquery.googleapis.com/Dataset
+      - storage.googleapis.com/Bucket

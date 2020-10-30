@@ -18,8 +18,10 @@ kind: GCPDNSSECConstraintV1
 metadata:
   name: clouddns_dnssec
   annotations:
+    category: Infrastructure Hardening
     description: DNSSec must be enbled for all CloudDNS Zones.
 spec:
   severity: major
   match:
     target: [organization/]
+    exclude:

@@ -18,16 +18,18 @@ kind: GCPRestrictedFirewallRulesConstraintV1
 metadata:
   name: no_public_access
   annotations:
+    category: Infrastructure Hardening
     description: Firewall rules allowing source range 0.0.0.0/0 are forbidden.
 spec:
   severity: critical
   match:
     target: ["organization/"]
+    exclude:
   parameters:
     rules:
       - direction: "INGRESS"
         rule_type: "allowed"
         source_ranges:
           - "0.0.0.0/0"
-#        port: "22"
+        #        port: "22"
         enabled: true

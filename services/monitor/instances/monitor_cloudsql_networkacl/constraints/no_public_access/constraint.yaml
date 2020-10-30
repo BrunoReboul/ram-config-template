@@ -17,6 +17,7 @@ kind: GCPSQLAllowedAuthorizedNetworksConstraintV1
 metadata:
   name: no_public_access
   annotations:
+    category: Infrastructure Hardening
     description: Public access to CloudSQL Instances is forbidden.
 spec:
   severity: major
@@ -26,5 +27,5 @@ spec:
   parameters:
     mode: blacklist
     networks:
-    - "0.0.0.0/0" # Public
+      - "0.0.0.0/0" # Public
 

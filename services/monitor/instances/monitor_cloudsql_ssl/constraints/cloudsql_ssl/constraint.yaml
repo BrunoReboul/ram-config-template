@@ -18,8 +18,10 @@ kind: GCPSQLSSLConstraintV1
 metadata:
   name: cloudsql_ssl
   annotations:
+    category: Database Security
     description: CloudSQL Instances accesses must be ciphered.
 spec:
   severity: major
   match:
     target: ["organization/"]
+    exclude:

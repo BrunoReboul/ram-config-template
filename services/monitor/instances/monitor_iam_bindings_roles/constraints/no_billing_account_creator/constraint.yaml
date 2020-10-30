@@ -17,13 +17,14 @@ kind: GCPIAMBindingsrolesConstraintV1
 metadata:
   name: no_billing_account_creator
   annotations:
-    description: Only one billing account, not need to create any other
+    category: Identity and Access Management
+    description: Only one billing account, not need to create any other.
 spec:
-  severity: low
+  severity: minor
   match:
     target: [organization/]
     exclude:
   parameters:
     mode: blacklist
-    roles: 
-    - roles/billing.creator
+    roles:
+      - roles/billing.creator

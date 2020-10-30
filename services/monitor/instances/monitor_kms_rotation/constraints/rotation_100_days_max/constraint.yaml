@@ -17,15 +17,17 @@
 apiVersion: constraints.gatekeeper.sh/v1alpha1
 kind: GCPCMEKRotationConstraintV1
 metadata:
-  name: rotation_100_days_max
+  name: kms_max_rotation_period
   annotations:
+    category: Debt Management
     description: KMS keys must have a rotation period of a 100 days max.
 spec:
   severity: medium
   match:
     target: ["organization/"]
+    exclude:
+  parameters:
+    period: 2400h
     # Optionaly specify the required key rotation period.  Default is 365 days
     # Valid time units are  "ns", "us" (or "µs"), "ms", "s", "m", "h"
     # This is 100 days
-  parameters:
-    period: 2400h 

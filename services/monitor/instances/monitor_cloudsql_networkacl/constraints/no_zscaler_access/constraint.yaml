@@ -17,6 +17,7 @@ kind: GCPSQLAllowedAuthorizedNetworksConstraintV1
 metadata:
   name: no_zscaler_access
   annotations:
+    category: Infrastructure Hardening
     description: Acces to CloudSQL Instances from Zscaler is forbidden.
 spec:
   severity: medium
@@ -26,6 +27,6 @@ spec:
   parameters:
     mode: blacklist
     networks:
-    - "165.225.76.0/23" # Zscaler 
-    - "165.225.88.0/23" # Zscaler
+      - "165.225.76.0/23" # Zscaler
+      - "165.225.88.0/23" # Zscaler
 
