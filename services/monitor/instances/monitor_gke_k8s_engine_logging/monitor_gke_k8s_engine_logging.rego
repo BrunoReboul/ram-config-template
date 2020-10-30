@@ -1,5 +1,5 @@
 #Check is cluster is using StackDriver Logging
-package templates.gcp.GCPGKEEnableStackdriverLoggingConstraintV1
+package templates.gcp.GCPGKEEnableK8sEngineLoggingConstraintV1
 
 import data.validator.gcp.lib as lib
 
@@ -14,7 +14,7 @@ deny[{
     cluster := asset.resource.data
     stackdriver_logging_disabled(cluster)
 
-    message := sprintf("Stackdriver logging is disabled in cluster %v.", [asset.name])
+    message := sprintf("Kubernetes Engine logging is not enabled in cluster %v.", [asset.name])
     metadata := {"resource": asset.name}
 }
 
@@ -23,7 +23,6 @@ deny[{
 ###########################
 stackdriver_logging_disabled(cluster) {
     loggingService := lib.get_default(cluster, "loggingService", "none")
-    loggingService != ""
-    loggingService != "logging.googleapis.com"
+    trace(sprintf("loggingService : %v", [loggingService]))
     loggingService != "logging.googleapis.com/kubernetes"
 }

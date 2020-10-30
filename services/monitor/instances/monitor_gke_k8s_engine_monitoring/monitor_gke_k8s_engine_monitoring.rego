@@ -1,5 +1,5 @@
 #Check is cluster is using CoreOs or Not
-package templates.gcp.GCPGKEEnableStackdriverMonitoringConstraintV1
+package templates.gcp.GCPGKEEnableK8sEngineMonitoringConstraintV1
 
 import data.validator.gcp.lib as lib
 
@@ -14,7 +14,7 @@ deny[{
     cluster := asset.resource.data
     stackdriver_monitoring_disabled(cluster)
 
-    message := sprintf("Stackdriver monitoring is disabled in cluster %v.", [asset.name])
+    message := sprintf("Kubernetes Engine monitoring is not enabled in cluster %v.", [asset.name])
     metadata := {"resource": asset.name}
 }
 
@@ -23,5 +23,5 @@ deny[{
 ###########################
 stackdriver_monitoring_disabled(cluster) {
     monitoringService := lib.get_default(cluster, "monitoringService", "none")
-    monitoringService != "monitoring.googleapis.com"
+    monitoringService != "monitoring.googleapis.com/kubernetes"
 }
