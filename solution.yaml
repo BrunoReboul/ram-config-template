@@ -190,6 +190,7 @@ monitoring:
       - dns.googleapis.com/ManagedZone
       - iam.googleapis.com/ServiceAccount
       - iam.googleapis.com/ServiceAccountKey
+      - k8s.io/Pod
       - serviceusage.googleapis.com/Service
       - spanner.googleapis.com/Instance
       - sqladmin.googleapis.com/Instance
