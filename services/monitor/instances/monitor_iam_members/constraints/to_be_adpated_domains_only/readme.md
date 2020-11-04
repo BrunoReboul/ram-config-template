@@ -1,4 +1,4 @@
-# iam_members to_be_adpated_domains_only
+# iam_members to_be_adapted_domains_only
 
 ## Background
 

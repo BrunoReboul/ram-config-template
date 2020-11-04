@@ -69,6 +69,9 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 
 #### `ram_cli_monitoring_org_extended`
 
+- `cloudasset.feeds.delete`
+- `cloudasset.feeds.get`
+- `cloudasset.feeds.list`
 - `iam.roles.create`
 - `iam.roles.get`
 - `iam.roles.list`
@@ -76,9 +79,6 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 - `resourcemanager.organizations.get`
 - `resourcemanager.organizations.getIamPolicy`
 - `resourcemanager.organizations.setIamPolicy`
-- `cloudasset.feeds.list`
-- `cloudasset.feeds.get`
-- `cloudasset.feeds.delete`
 
 #### Billing account scope role binding
 
@@ -102,7 +102,7 @@ Cloud Asset Inventory requires it:
 ## Export gSuite activity logs to GCP organization
 
 This step is required to enable near real-time analyis of group changes.  
-From gSuite admin console, Company profile / Legal / Sharing option / Enable.  
+From gSuite admin console, Account settings / Legal and Compliance / Sharing option / Enable.  
 Doc: [Share data with Google Cloud Platform services - G Suite Admin Help](https://support.google.com/a/answer/9320190)
 
 ## Domain Wide Delegation

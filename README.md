@@ -95,7 +95,7 @@ Create a folder for `ram` and follow the next steps using a user account with fu
 ## Make cloud build release pipelines
 
 - `ram -pipe`
-- This step takes about 15 minutes
+- This step takes about 15 minutes for 1 GCP organization
 - Check results in console / cloud build / triggers
 - `ram -pipe -check` to check each cloud build trigger has been deployed and configured as specified in the yaml code
 
