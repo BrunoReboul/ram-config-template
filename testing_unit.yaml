@@ -12,18 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-apiVersion: constraints.gatekeeper.sh/v1alpha1
-kind: GKEClusterLocationConstraintV1
-metadata:
-  name: to_be_adapted
-  annotations:
-    category: Personnal Data Compliance
-    description: GKE clusters must be in <to_be_adapted> for <to_be_adapted>.
-spec:
-  severity: major
-  match:
-    target: ["organization/"] # to_be_adapted
-    exclude:
-  parameters:
-    locations: # to_be_adapted
-      - "europe*"
+tags: ["ram", "unit-testing"]
+steps:
+  - name: golang
+    args:
+      - go
+      - test
+      - ./...
+      - -run
+      - TestUnit*
+      # - -v
+    id: unit test all go packages verbose
