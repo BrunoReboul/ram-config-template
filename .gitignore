@@ -19,4 +19,3 @@ go.sum
 ram
 cloud_function_source.zip
 services/monitor/constraints.yaml
-services/monitor/constraints.csv
