@@ -1,0 +1,39 @@
+serviceName,ruleName,constraintName,severity,category,kind,description
+bq,dataset_location,to_be_adapted,critical,Personnal Data Compliance,GCPBigQueryDatasetLocationConstraintV1,BQ Dataset must be located in <to_be_adapted> for projects in <to_be_adapted>.
+clouddns,dnssec,clouddns_dnssec,major,Infrastructure Hardening,GCPDNSSECConstraintV1,DNSSec must be enbled for all CloudDNS Zones.
+clouddns,rsasha1,clouddns_rsasha1,critical,Debt Management,GCPDNSSECPreventRSASHA1ConstraintV1,Weak Algorithm SHA1 is forbidden on CloudDNS DNSSec.
+cloudsql,backup,cloudsql_backup,major,Database Security,GCPSQLBackupConstraintV1,CloudSQL instances must have a backup schedule.
+cloudsql,location,to_be_adapted,critical,Personnal Data Compliance,GCPSQLLocationConstraintV1,CloudSQL Instances must be in <to_be_adapted> for projects in <to_be_adapted>.
+cloudsql,maintenance,cloudsql_maintenance,minor,Database Security,GCPSQLMaintenanceWindowConstraintV1,CloudSQL Instances must have a maintenance schedule.
+cloudsql,networkacl,no_public_access,major,Infrastructure Hardening,GCPSQLAllowedAuthorizedNetworksConstraintV1,Public access to CloudSQL Instances is forbidden.
+cloudsql,networkacl,no_zscaler_access,medium,Infrastructure Hardening,GCPSQLAllowedAuthorizedNetworksConstraintV1,Acces to CloudSQL Instances from Zscaler is forbidden.
+cloudsql,ssl,cloudsql_ssl,major,Database Security,GCPSQLSSLConstraintV1,CloudSQL Instances accesses must be ciphered.
+gae,location,to_be_adapted,major,Personnal Data Compliance,GCPAppengineLocationConstraintV1,GAE applications must be in <to_be_adapted> for <to_be_adapted>.
+gae,max_version,traffic_split_to_more_than_2_versions,medium,Debt Management,GCPAppEngineServiceVersionsConstraintV1,GAE applications' services should not have more than 2 versions.
+gae,uses_iap,to_be_adapted,major,Identity and Access Management,GCPAppengineIAPEnabledV1,GAE Applications must enable IAP in <to_be_adapted>.
+gce,compute_zone,to_be_adapted,major,Personnal Data Compliance,GCPComputeZoneConstraintV1,GCE VMs must be in <to_be_adapted> for <to_be_adapted>.
+gce,external_ip,gce_external_ip,major,Infrastructure Hardening,GCPComputeExternalIpAccessConstraintV1,External IPs for GCE VMs are forbidden.
+gce,network_firewall_log,gce_network_firewall_log,medium,Traceability,GCPNetworkEnableFirewallLogsConstraintV1,GCE firewall rules logging must be activated.
+gce,network_firewall_rules,no_public_access,critical,Infrastructure Hardening,GCPRestrictedFirewallRulesConstraintV1,Firewall rules allowing source range 0.0.0.0/0 are forbidden.
+gcs,storage_location,to_be_adapted,critical,Personnal Data Compliance,GCPStorageLocationConstraintV1,GCS Buckets must be in <to_be_adapted> for projects in <to_be_adapted>.
+gke,abac,gke_abac,minor,Identity and Access Management,GCPGKELegacyAbacConstraintV1,Legacy ABAC for GKE clusters is forbidden.
+gke,alias_ip_range,gke_alias_ip_range,medium,Infrastructure Hardening,GCPGKEEnableAliasIPRangesConstraintV1,"GKE clusters must be VPC-native cluster, aka using alias IP address ranges."
+gke,allow_node_sa,gke_allow_node_sa,medium,Identity and Access Management,GCPGKEAllowedNodeSAConstraintV1,OAuth scope is fordiden on the service account used with GKE nodePools.
+gke,client_auth_method,gke_client_auth_method,major,Identity and Access Management,GCPGKERestrictClientAuthenticationMethodsConstraintV1,Client certificate or static password authentication is forbidden in GKE clusters.
+gke,cluster_location,to_be_adapted,major,Personnal Data Compliance,GKEClusterLocationConstraintV1,GKE clusters must be in <to_be_adapted> for <to_be_adapted>.
+gke,coreos,gke_coreos,medium,Infrastructure Hardening,GCPGKEContainerOptimizedOSConstraintV1,GKE Clusters' Nodes with OS image other than COS are forbidden.
+gke,dashboard,gke_dashboard,major,Infrastructure Hardening,GCPGKEDashboardConstraintV1,GKE Dashboard must be disabled.
+gke,disable_default_sa,gke_disable_default_sa,medium,Identity and Access Management,GCPGKEDisableDefaultServiceAccountConstraintV1,GKE Clusters' Nodes with default compute engine service account are forbidden.
+gke,k8s_engine_logging,gke_k8s_engine_logging,major,Traceability,GCPGKEEnableStackdriverLoggingConstraintV1,GKE Clusters must have Kubernetes Engine logging enabled.
+gke,k8s_engine_monitoring,gke_k8s_engine_monitoring,major,Monitoring,GCPGKEEnableStackdriverMonitoringConstraintV1,GKE Clusters must have Kubernetes Engine monitoring enabled.
+gke,private_cluster,gke_private_cluster,major,Infrastructure Hardening,GCPGKEPrivateClusterConstraintV1,GKE Clusters must be Private.
+gke,version,gke_version,minor,Debt Management,GCPGKEVersionConstraintV1,Only up-to-date version are allowed.
+iam,bindings_roles,no_billing_account_creator,minor,Identity and Access Management,GCPIAMBindingsrolesConstraintV1,"Only one billing account, not need to create any other."
+iam,bindings_roles,no_owner_no_editor_on_folders,major,Identity and Access Management,GCPIAMBindingsrolesConstraintV1,"No owner role, no editor role on folders"
+iam,bindings_roles,no_primitives_on_org,major,Identity and Access Management,GCPIAMBindingsrolesConstraintV1,Primitives roles are not authorized on organizations
+iam,members,no_domains_grants,major,Identity and Access Management,GCPIAMMembersConstraintV1,Grants to domains in IAM are forbidden.
+iam,members,no_public_access_bq_dataset_gcs_bucket,major,Identity and Access Management,GCPIAMMembersConstraintV1,Public access to BQ Datasets and GCS Buckets are forbidden.
+iam,members,to_be_adapted__no_users,major,,GCPIAMMembersConstraintV1,Named users are forbidden in IAM for <to_be_adapted>.
+iam,members,to_be_adapted_domains_only,major,Identity and Access Management,GCPIAMMembersConstraintV1,No adresses outside <to_be_adapted> domains are allowed in IAM.
+iam,sa_key_age,iam_sa_key_age,medium,Debt Management,GCPIAMRestrictServiceAccountKeyAgeConstraintV1,Service Accounts keys should not be older than 100 days.
+kms,rotation,kms_max_rotation_period,medium,Debt Management,GCPCMEKRotationConstraintV1,KMS keys must have a rotation period of a 100 days max.
