@@ -3,6 +3,25 @@
 Real-time Asset Monitor configuration template to be cloned and adapted to your environment.  
 [Product overview](docs/product_overview.md)
 
+## Customize compliance rules
+
+**[Compliance rules table of content](services/monitor/readme.md)** including links on *how to remediate*.
+
+Compliance rules [**export to CSV format**](services/monitor/constraints.csv).
+
+RAM complement other GCP compliance tools by brining the ability to define **custom rules**, so it is time to customize :-)
+
+- In `./services/monitor/instances`
+  - This folder contains rules as REGO code and `constraints.yaml` settings to be reviewed, and adapted
+    - `target` and `exclude` lists enable to define the relevant scope in your GCP hierarchy for each rule
+    - `exemptions` lists enable to whitelist specific assets when available
+    - Several settings need to be adapted like all rules related to **data sovereignty**
+      - A search in this folder for the string `to_be_adapted` will directly point you to them
+  - create additional compliance rules as needed
+- Once settings are tailored to your context do not forget to commit changes in your git repo## Clear pre-requisites
+
+Folder, group, service account and permission pre-requisites are described [HERE](docs/pre_requisites.md)
+
 ## Clear pre-requisites
 
 Folder, group, service account and permission pre-requisites are described [HERE](docs/pre_requisites.md)
@@ -31,19 +50,6 @@ Folder, group, service account and permission pre-requisites are described [HERE
     - organizationIDs
     - directoryCustomerIDs and associates super admin emails
     - Keep list group scheduler different from other scheduler (do NOT mutualize) as the associated topic is used recursively to scale GCP queries
-
-## Customize compliance rules
-
-RAM complement other GCP compliance tools by brining the ability to define **custom rules**, so it is time to customize :-)
-
-- In `./services/monitor/instances`
-  - This folder contains rules as REGO code and `constraints.yaml` settings to be reviewed, and adapted
-    - `target` and `exclude` lists enable to define the relevant scope in your GCP hierarchy for each rule
-    - `exemptions` lists enable to whitelist specific assets when available
-    - Several settings need to be adapted like all rules related to **data sovereignty**
-      - A search in this folder for the string `to_be_adapted` will directly point you to them
-  - create additional compliance rules as needed
-- Once settings are tailored to your context do not forget to commit changes in your git repo
 
 ## Install GO
 
