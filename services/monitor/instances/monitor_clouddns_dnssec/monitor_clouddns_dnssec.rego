@@ -23,8 +23,10 @@ deny[{
     constraint := input.constraint
     asset := input.asset
     asset.asset_type == "dns.googleapis.com/ManagedZone"
-
-    asset.resource.data.dnssecConfig.state != "ON"
+    dnssecConfig := lib.get_default(asset.resource.data, "dnssecConfig", {})
+    state := lib.get_default(dnssecConfig, "state", "OFF")
+    trace(sprintf("state: %v", [state]))
+    state != "ON"
 
     message := sprintf("%v: DNSSEC is not enabled.", [asset.name])
     metadata := {"resource": asset.name}
