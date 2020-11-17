@@ -15,7 +15,7 @@
 apiVersion: constraints.gatekeeper.sh/v1alpha1
 kind: GCPIAMMembersConstraintV1
 metadata:
-  name: to_be_adapted__no_users
+  name: to_be_adapted_no_users
   annotations:
     description: Named users are forbidden in IAM for <to_be_adapted>.
 spec:
