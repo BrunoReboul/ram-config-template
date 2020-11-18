@@ -38,7 +38,7 @@ deny[{
 # Check that zone is in allowlist/denylist
 	target_locations := params.locations
 	target_location_match_count(params.mode, desired_count)
-    trace(sprintf("desired_count, 1 means deny mode, 0 means allow mode", [desired_count]))
+    trace(sprintf("desired_count, 1 means deny mode, 0 means allow mode %v", [desired_count]))
 
 	asset_zone := asset.resource.location
     zone_parts := split(asset_zone, "-")
