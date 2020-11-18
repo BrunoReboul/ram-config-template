@@ -1,4 +1,4 @@
-# gce_external_ip
+# gce_instance_externalip
 
 ## Background
 

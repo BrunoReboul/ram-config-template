@@ -15,7 +15,7 @@
 apiVersion: constraints.gatekeeper.sh/v1alpha1
 kind: GCPComputeExternalIpAccessConstraintV1
 metadata:
-  name: gce_external_ip
+  name: gce_instance_externalip
   annotations:
     category: Infrastructure Hardening
     description: External IPs for GCE VMs are forbidden.
