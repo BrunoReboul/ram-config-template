@@ -1,4 +1,4 @@
-# gce_network_firewall_rules no_public_access
+# gce_firewallrule_traffic no_public_access
 
 ## Background
 
