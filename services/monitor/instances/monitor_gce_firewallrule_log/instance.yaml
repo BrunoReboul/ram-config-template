@@ -13,4 +13,4 @@
 # limitations under the License.
 #
 gcf:
-  triggerTopic: cai-rces-compute-Network
+  triggerTopic: cai-rces-compute-Firewall

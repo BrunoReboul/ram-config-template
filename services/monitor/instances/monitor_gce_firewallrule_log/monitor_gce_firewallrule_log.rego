@@ -12,15 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-apiVersion: constraints.gatekeeper.sh/v1alpha1
-kind: GCPNetworkEnableFirewallLogsConstraintV1
-metadata:
-  name: gce_network_firewall_log
-  annotations:
-    category: Traceability
-    description: GCE firewall rules logging must be activated.
-spec:
-  severity: medium
-  match:
-    target: [organization/]
-    exclude:
+package templates.gcp.GCPNetworkEnableFirewallLogsConstraintV1
+
+import data.validator.gcp.lib as lib
+
+deny[{
+    "msg": message,
+    "details": metadata,
+}] {
+    constraint := input.constraint
+    asset := input.asset
+    asset.asset_type == "compute.googleapis.com/Firewall"
+
+    log_config := lib.get_default(asset.resource.data, "logConfig", {})
+    is_enabled := lib.get_default(log_config, "enable", false)
+    is_enabled == false
+
+    message := sprintf("Firewall rule logs are disabled in firewall rule %v.", [asset.name])
+    metadata := {"resource": asset.name}
+}
