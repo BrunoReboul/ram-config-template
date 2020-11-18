@@ -1,4 +1,4 @@
-# gce_network_firewall_log
+# gce_firewallrule_log
 
 ## Background
 

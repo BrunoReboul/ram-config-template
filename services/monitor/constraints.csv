@@ -11,8 +11,9 @@ cloudsql,ssl,cloudsql_ssl,major,Database Security,GCPSQLSSLConstraintV1,CloudSQL
 gae,location,to_be_adapted,major,Personnal Data Compliance,GCPAppengineLocationConstraintV1,GAE applications must be in <to_be_adapted> for <to_be_adapted>.
 gae,max_version,traffic_split_to_more_than_2_versions,medium,Debt Management,GCPAppEngineServiceVersionsConstraintV1,GAE applications' services should not have more than 2 versions.
 gae,uses_iap,to_be_adapted,major,Identity and Access Management,GCPAppengineIAPEnabledV1,GAE Applications must enable IAP in <to_be_adapted>.
-gce,compute_zone,to_be_adapted,major,Personnal Data Compliance,GCPComputeZoneConstraintV1,GCE VMs must be in <to_be_adapted> for <to_be_adapted>.
+gce,disk_location,to_be_adapted,major,Personnal Data Compliance,GCPComputeZoneConstraintV1,GCE instance disks must be in <to_be_adapted> for <to_be_adapted>.
 gce,external_ip,gce_external_ip,major,Infrastructure Hardening,GCPComputeExternalIpAccessConstraintV1,External IPs for GCE VMs are forbidden.
+gce,instance_location,to_be_adapted,major,Personnal Data Compliance,GCPComputeZoneConstraintV1,GCE VMs must be in <to_be_adapted> for <to_be_adapted>.
 gce,network_firewall_log,gce_network_firewall_log,medium,Traceability,GCPNetworkEnableFirewallLogsConstraintV1,GCE firewall rules logging must be activated.
 gce,network_firewall_rules,no_public_access,critical,Infrastructure Hardening,GCPRestrictedFirewallRulesConstraintV1,Firewall rules allowing source range 0.0.0.0/0 are forbidden.
 gcs,storage_location,to_be_adapted,critical,Personnal Data Compliance,GCPStorageLocationConstraintV1,GCS Buckets must be in <to_be_adapted> for projects in <to_be_adapted>.
@@ -33,7 +34,7 @@ iam,bindings_roles,no_owner_no_editor_on_folders,major,Identity and Access Manag
 iam,bindings_roles,no_primitives_on_org,major,Identity and Access Management,GCPIAMBindingsrolesConstraintV1,Primitives roles are not authorized on organizations
 iam,members,no_domains_grants,major,Identity and Access Management,GCPIAMMembersConstraintV1,Grants to domains in IAM are forbidden.
 iam,members,no_public_access_bq_dataset_gcs_bucket,major,Identity and Access Management,GCPIAMMembersConstraintV1,Public access to BQ Datasets and GCS Buckets are forbidden.
-iam,members,to_be_adapted__no_users,major,,GCPIAMMembersConstraintV1,Named users are forbidden in IAM for <to_be_adapted>.
+iam,members,to_be_adapted_no_users,major,,GCPIAMMembersConstraintV1,Named users are forbidden in IAM for <to_be_adapted>.
 iam,members,to_be_adapted_domains_only,major,Identity and Access Management,GCPIAMMembersConstraintV1,No adresses outside <to_be_adapted> domains are allowed in IAM.
 iam,sa_key_age,iam_sa_key_age,medium,Debt Management,GCPIAMRestrictServiceAccountKeyAgeConstraintV1,Service Accounts keys should not be older than 100 days.
 kms,rotation,kms_max_rotation_period,medium,Debt Management,GCPCMEKRotationConstraintV1,KMS keys must have a rotation period of a 100 days max.
