@@ -18,18 +18,27 @@ package templates.gcp.GKEClusterLocationConstraintV1
 import data.validator.gcp.lib as lib
 
 deny[{
-"msg": message,
-"details": metadata,
+    "msg": message,
+    "details": metadata,
 }] {
-constraint := input.constraint
-lib.get_constraint_params(constraint, params)
-asset := input.asset
-asset.asset_type == "container.googleapis.com/Cluster"
+    constraint := input.constraint
+    lib.get_constraint_params(constraint, params)
 
-cluster_location := asset.resource.data.location
-target_location := params.allowed_locations
-count({cluster_location} & cast_set(target_location)) == 0
+    asset := input.asset
+    asset.asset_type == "container.googleapis.com/Cluster"
 
-message := sprintf("Cluster %v is not allowed in the specified location", [asset.name])
-metadata := {"resource": asset.name}
+    target_locations := params.locations
+
+	asset_zone := asset.resource.location
+    zone_parts := split(asset_zone, "-")
+    region_parts := array.slice(zone_parts,0,2)
+    asset_location := concat("-", region_parts)
+    trace(sprintf("asset_location: %v", [asset_location]))
+
+	location_matches := {asset_location} & cast_set(target_locations)
+    trace(sprintf("count location matches %v", [count(location_matches)]))
+	count(location_matches) == 0
+
+    message := sprintf("Cluster %v is in a disallowed location.", [asset.name])
+	metadata := {"location": asset_location}
 }

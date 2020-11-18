@@ -26,4 +26,7 @@ spec:
     exclude:
   parameters:
     locations: # to_be_adapted
-      - "europe*"
+      - europe-north1
+      - europe-west1
+      - europe-west3
+      - europe-west4
