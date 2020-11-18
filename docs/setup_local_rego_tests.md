@@ -90,4 +90,4 @@ clouddns_dnssec/modules/monitor_clouddns_dnssec.rego:28     | | | Note "state: O
 ]
 ```
 
-- `exit` to exit opa run
+- `exit` to exit opa run.

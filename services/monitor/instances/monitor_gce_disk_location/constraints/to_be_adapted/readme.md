@@ -1,8 +1,8 @@
-# gce_compute_zone to_be_adapted
+# gce_disk_location to_be_adapted
 
 ## Background
 
-Compute instances (VM) location have to comply with data soveriegnty regulation
+Compute instance disks location have to comply with data soveriegnty regulation
 
 If you are moving an instance across regions, you must pick a different IP address for the VM instance.
 
