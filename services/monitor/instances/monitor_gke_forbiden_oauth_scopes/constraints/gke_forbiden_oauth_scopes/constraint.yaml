@@ -15,12 +15,13 @@
 apiVersion: constraints.gatekeeper.sh/v1alpha1
 kind: GCPGKEAllowedNodeSAConstraintV1
 metadata:
-  name: gke_allow_node_sa
+  name: gke_forbiden_oauth_scopes
   annotations:
     category: Identity and Access Management
-    description: OAuth scope is fordiden on the service account used with GKE nodePools.
+    description: Only a few OAuth scopes are allowed on the service account used with GKE nodePools.
 spec:
   severity: medium
   match:
     target: [organization/]
     exclude:
+  parameters:

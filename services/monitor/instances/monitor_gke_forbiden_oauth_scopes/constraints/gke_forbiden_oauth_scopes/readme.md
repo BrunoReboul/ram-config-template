@@ -1,10 +1,10 @@
-# gke_allow_node_sa
+# gke_forbiden_oauth_scopes
 
 ## Background
 
 Access scopes are the legacy method of specifying permissions for your nodes, and for workloads running on your nodes if the workloads are using application default credentials (ADC). In clusters running Kubernetes versions prior to 1.10, the cluster's default service account was granted a set of default access scopes.
 
-OAuth scope is fordiden on the service account used with GKE nodePools.
+Only a few OAuth scopes are allowed on the service account used with GKE nodePools.
 
 ## Fix
 
