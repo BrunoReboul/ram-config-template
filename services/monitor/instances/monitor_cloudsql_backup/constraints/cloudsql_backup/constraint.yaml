@@ -1,5 +1,4 @@
-#
-# Copyright 2019 Google LLC
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +17,10 @@ kind: GCPSQLBackupConstraintV1
 metadata:
   name: cloudsql_backup
   annotations:
+    category: Database Security
     description: CloudSQL instances must have a backup schedule.
 spec:
   severity: major
   match:
     target: ["organization/"]
+    exclude:

@@ -1,5 +1,4 @@
-#
-# Copyright 2019 Google LLC
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +17,10 @@ kind: GCPGKEDisableDefaultServiceAccountConstraintV1
 metadata:
   name: gke_disable_default_sa
   annotations:
-    description: GKE Clusters' Nodes with default SA are forbidden.
+    category: Identity and Access Management
+    description: GKE Clusters' Nodes with default compute engine service account are forbidden.
 spec:
   severity: medium
   match:
     target: [organization/]
+    exclude:

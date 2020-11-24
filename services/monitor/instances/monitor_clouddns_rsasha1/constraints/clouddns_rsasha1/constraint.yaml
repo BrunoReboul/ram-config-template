@@ -1,5 +1,4 @@
-#
-# Copyright 2019 Google LLC
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +17,10 @@ kind: GCPDNSSECPreventRSASHA1ConstraintV1
 metadata:
   name: clouddns_rsasha1
   annotations:
+    category: Debt Management
     description: Weak Algorithm SHA1 is forbidden on CloudDNS DNSSec.
 spec:
   severity: critical
   match:
     target: [organization/]
+    exclude:

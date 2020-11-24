@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,10 +17,12 @@ kind: GCPAppEngineServiceVersionsConstraintV1
 metadata:
   name: traffic_split_to_more_than_2_versions
   annotations:
+    category: Debt Management
     description: GAE applications' services should not have more than 2 versions.
 spec:
   severity: medium
   match:
     target: ["organization/"]
+    exclude:
   parameters:
     max_versions: 2
