@@ -107,6 +107,17 @@ Create a folder for `ram` and follow the next steps using a user account with fu
 
 ## Tag to deploy RAM microservices instances
 
+**Warmup** Cloud build on a brand new project:
+
+- Launching more than 100 cloud build jobs simultaneously, on a brand new project where cloud build had never been used, may lead to fail the first hundred with the error `Your build failed to run: generic::invalid_argument: invalid bucket "10blabla19.cloudbuild-logs.googleusercontent.com"; builder service account does not have access to the bucket`
+- Once cloud build has been use at least once on the project it is possible to launch several hundreds of builds, but not yet.
+- To work arround this issue, lets launch one build first by using the following commands:
+  - `git tag -a splitdump_single_instance-v0.0.1-dev =m "initial deployment"`
+  - `git push --tags`
+  - Check results in console / cloud build / history. Proceed to next steps only once cloud build has run at least one job successfully.
+
+Then launch the full deployment:
+
 - `git tag -a ram-vx.y.z-env -m "your message"`
   - example `git tag -a ram-v0.0.1-dev -m "initial deployment"`
 - `git push --tags`

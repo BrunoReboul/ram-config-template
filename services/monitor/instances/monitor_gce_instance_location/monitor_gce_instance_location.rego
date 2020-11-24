@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#Check is cluster is in the right location or not
-package templates.gcp.GKEClusterLocationConstraintV1
+package templates.gcp.GCPComputeZoneConstraintV1
 
 import data.validator.gcp.lib as lib
 
+#####################################
+# Find Compute Asset Zone Violations
+#####################################
 deny[{
     "msg": message,
     "details": metadata,
@@ -25,9 +27,18 @@ deny[{
     lib.get_constraint_params(constraint, params)
 
     asset := input.asset
-    asset.asset_type == "container.googleapis.com/Cluster"
+    asset.asset_type == "compute.googleapis.com/Instance"
 
-    target_locations := params.locations
+    # Check if resource is in exempt list
+    exempt_list := params.exemptions
+    matches := {asset.name} & cast_set(exempt_list)
+    trace(sprintf("Exempted if count matches > 0: %v", [count(matches)]))
+    count(matches) == 0
+
+    # Check that zone is in allowlist/denylist
+	target_locations := params.locations
+	target_location_match_count(params.mode, desired_count)
+    trace(sprintf("desired_count, 1 means deny mode, 0 means allow mode %v", [desired_count]))
 
 	asset_zone := asset.resource.location
     zone_parts := split(asset_zone, "-")
@@ -37,8 +48,22 @@ deny[{
 
 	location_matches := {asset_location} & cast_set(target_locations)
     trace(sprintf("count location matches %v", [count(location_matches)]))
-	count(location_matches) == 0
+	count(location_matches) == desired_count
 
-    message := sprintf("Cluster %v is in a disallowed location.", [asset.name])
+	message := sprintf("%v is in a disallowed location.", [asset.name])
 	metadata := {"location": asset_location}
+}
+
+#################
+# Rule Utilities
+#################
+
+# Determine the overlap between locations under test and constraint
+# By default (allowlist), we violate if there isn't overlap
+target_location_match_count(mode) = 0 {
+	mode != "denylist"
+}
+
+target_location_match_count(mode) = 1 {
+	mode == "denylist"
 }

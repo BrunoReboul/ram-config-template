@@ -12,22 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package templates.gcp.GCPDNSSECConstraintV1
-
-import data.validator.gcp.lib as lib
-
-deny[{
-    "msg": message,
-    "details": metadata,
-}] {
-    constraint := input.constraint
-    asset := input.asset
-    asset.asset_type == "dns.googleapis.com/ManagedZone"
-    dnssecConfig := lib.get_default(asset.resource.data, "dnssecConfig", {})
-    state := lib.get_default(dnssecConfig, "state", "OFF")
-    trace(sprintf("state: %v", [state]))
-    state != "ON"
-
-    message := sprintf("%v: DNSSEC is not enabled.", [asset.name])
-    metadata := {"resource": asset.name}
-}
+apiVersion: constraints.gatekeeper.sh/v1alpha1
+kind: GCPComputeExternalIpAccessConstraintV1
+metadata:
+  name: gce_instance_externalip
+  annotations:
+    category: Infrastructure Hardening
+    description: External IPs for GCE VMs are forbidden.
+spec:
+  severity: major
+  match:
+    target: [organization/]
+    exclude:
+  parameters:
+    # modes can be [whitelist, blacklist]
+    mode: blacklist
+    # match_mode can be [exact, regex], default is exact.
+    match_mode: regex
+    instances:
+      # regex example:
+      - //compute.googleapis.com/projects/.*

@@ -4,17 +4,17 @@ Repository: **ram-config-template**
 
 *Timestamp* 2020-11-09 09:06:57.289778116 +0100 CET m=+1.062367641
 
-Service | rules | constraints
---- | --- | ---
-**bq** | 1 | 1
-**clouddns** | 2 | 2
-**cloudsql** | 5 | 6
-**gae** | 3 | 3
-**gce** | 4 | 4
-**gcs** | 1 | 1
-**gke** | 12 | 12
-**iam** | 3 | 8
-**kms** | 1 | 1
+| Service      | rules | constraints |
+| ------------ | ----- | ----------- |
+| **bq**       | 1     | 1           |
+| **clouddns** | 2     | 2           |
+| **cloudsql** | 5     | 6           |
+| **gae**      | 3     | 3           |
+| **gce**      | 4     | 4           |
+| **gcs**      | 1     | 1           |
+| **gke**      | 12    | 12          |
+| **iam**      | 3     | 8           |
+| **kms**      | 1     | 1           |
 
 9 services 32 rules 38 constraints
 
@@ -45,7 +45,7 @@ Service | rules | constraints
 
 ## gce
 
-- compute_zone   - **[to_be_adapted](instances/monitor_gce_compute_zone/constraints/to_be_adapted/readme.md)** (*major* Personnal Data Compliance)
+- compute_zone   - **[to_be_adapted](instances/monitor_gce_instance_location/constraints/to_be_adapted/readme.md)** (*major* Personnal Data Compliance)
 - external_ip   - **[gce_external_ip](instances/monitor_gce_external_ip/constraints/gce_external_ip/readme.md)** (*major* Infrastructure Hardening)
 - network_firewall_log   - **[gce_network_firewall_log](instances/monitor_gce_network_firewall_log/constraints/gce_network_firewall_log/readme.md)** (*medium* Traceability)
 - network_firewall_rules   - **[no_public_access](instances/monitor_gce_network_firewall_rules/constraints/no_public_access/readme.md)** (*critical* Infrastructure Hardening)

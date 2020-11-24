@@ -25,5 +25,8 @@ spec:
     target: ["organization/"] # to_be_adapted
     exclude:
   parameters:
-    locations: # to_be_adapted
-      - "europe*"
+    locations: # to_be_adapted.
+      - europe-north1
+      - europe-west1
+      - europe-west3
+      - europe-west4

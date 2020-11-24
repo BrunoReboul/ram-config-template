@@ -11,6 +11,8 @@ Changing the DNSSEC settings is only effective for a managed zone if DNSSEC is n
 KSK Key Signing Key
 ZSK Zone Signing Key
 
+**WARNING** RSASHA1 is disable by default. Use the quotas request process to be whitelisted (on exception), Then customize the scope of this rule using exclusions.
+
 ## Fix
 
 ```shell

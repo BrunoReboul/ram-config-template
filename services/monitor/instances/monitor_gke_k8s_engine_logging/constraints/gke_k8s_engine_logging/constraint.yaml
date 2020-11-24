@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 apiVersion: constraints.gatekeeper.sh/v1alpha1
-kind: GCPGKEEnableStackdriverLoggingConstraintV1
+kind: GCPGKEEnableK8sEngineLoggingConstraintV1
 metadata:
   name: gke_k8s_engine_logging
   annotations:

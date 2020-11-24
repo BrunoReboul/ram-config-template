@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package templates.gcp.GCPDNSSECConstraintV1
+package templates.gcp.GCPNetworkEnableFirewallLogsConstraintV1
 
 import data.validator.gcp.lib as lib
 
@@ -22,12 +22,12 @@ deny[{
 }] {
     constraint := input.constraint
     asset := input.asset
-    asset.asset_type == "dns.googleapis.com/ManagedZone"
-    dnssecConfig := lib.get_default(asset.resource.data, "dnssecConfig", {})
-    state := lib.get_default(dnssecConfig, "state", "OFF")
-    trace(sprintf("state: %v", [state]))
-    state != "ON"
+    asset.asset_type == "compute.googleapis.com/Firewall"
 
-    message := sprintf("%v: DNSSEC is not enabled.", [asset.name])
+    log_config := lib.get_default(asset.resource.data, "logConfig", {})
+    is_enabled := lib.get_default(log_config, "enable", false)
+    is_enabled == false
+
+    message := sprintf("Firewall rule logs are disabled in firewall rule %v.", [asset.name])
     metadata := {"resource": asset.name}
 }
