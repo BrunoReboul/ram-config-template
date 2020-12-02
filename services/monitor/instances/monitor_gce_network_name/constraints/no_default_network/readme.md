@@ -1,4 +1,4 @@
-# gce_instance_location to_be_adapted
+# monitor_gce_network_name no_default_network
 
 ## Background
 
