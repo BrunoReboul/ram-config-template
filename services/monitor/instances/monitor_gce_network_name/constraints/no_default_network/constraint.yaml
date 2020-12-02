@@ -27,4 +27,4 @@ spec:
     mode: "blacklist"
     name:
     - default
-    exemptions: []    
+    exemptions: []
