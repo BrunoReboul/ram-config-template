@@ -19,7 +19,6 @@ metadata:
   annotations:
     description: GCE VMs cannot use default service account.
     category: Identity and Access Management
-    documentation: https://github.com/adeo/DataFactoryArchitecture/blob/master/Heimdall-Manual/components/gce_instance_service_account.md
 spec:
   severity: major
   match:
