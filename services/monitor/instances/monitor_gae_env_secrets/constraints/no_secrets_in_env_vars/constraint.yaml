@@ -1,0 +1,172 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+apiVersion: constraints.gatekeeper.sh/v1alpha1
+kind: GCPAppengineEnvSecretConstraintV1
+metadata:
+  name: no_secrets_in_env_vars
+  annotations:
+    description: AppEngine with ENV var containing suspicious keywords.
+    category: Secret Management
+spec:
+  severity: critical
+  match:
+    target: ["organization/"] # to_be_adapted
+    exclude: 
+  parameters:
+    name_whitelist: # to_be_adapted
+      - GOOGLE_CREDENTIALS_PATH
+      - CONNECT_INTERNAL_KEY_CONVERTER          # required for Kafka
+      - CONNECT_KEY_CONVERTER                   # required for Kafka
+      - CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE    # required for Kafka
+    name_contains: # to_be_adapted
+      - "SECRET"
+      - "PASS"
+      - "CREDENTIAL"
+      - "TOKEN"
+      - "KEY"
+      - "PWD"
+    value_contains:
+      -
+          regex: '(A3T[A-Z0-9]|AKIA|AGPA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'
+          type: 'AWS Access Key ID Value'
+      -
+          regex: '((\"|''|`)?((?i)aws)?_?((?i)access)_?((?i)key)?_?((?i)id)?(\"|''|`)?\\s{0,50}(:|=>|=)\\s{0,50}(\"|''|`)?(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}(\"|''|`)?)'
+          type: 'AWS Access Key ID'
+      -
+          regex: '((\"|''|`)?((?i)aws)?_?((?i)account)_?((?i)id)?(\"|''|`)?\\s{0,50}(:|=>|=)\\s{0,50}(\"|''|`)?[0-9]{4}-?[0-9]{4}-?[0-9]{4}(\"|''|`)?)'
+          type: 'AWS Account ID'
+      -
+          regex: '((\"|''|`)?((?i)aws)?_?((?i)secret)_?((?i)access)?_?((?i)key)?_?((?i)id)?(\"|''|`)?\\s{0,50}(:|=>|=)\\s{0,50}(\"|''|`)?[A-Za-z0-9/+=]{40}(\"|''|`)?)'
+          type: 'AWS Secret Access Key'
+      -
+          regex: '((\"|''|`)?((?i)aws)?_?((?i)session)?_?((?i)token)?(\"|''|`)?\\s{0,50}(:|=>|=)\\s{0,50}(\"|''|`)?[A-Za-z0-9/+=]{16,}(\"|''|`)?)'
+          type: 'AWS Session Token'
+      -
+          regex: '(?i)artifactory.{0,50}(\"|''|`)?[a-zA-Z0-9=]{112}(\"|''|`)?'
+          type: Artifactory
+      -
+          regex: '(?i)codeclima.{0,50}(\"|''|`)?[0-9a-f]{64}(\"|''|`)?'
+          type: CodeClimate
+      -
+          regex: 'EAACEdEose0cBA[0-9A-Za-z]+'
+          type: 'Facebook access token'
+      -
+          regex: '((\"|''|`)?type(\"|''|`)?\\s{0,50}(:|=>|=)\\s{0,50}(\"|''|`)?service_account(\"|''|`)?,?)'
+          type: 'Google (GCM) Service account'
+      -
+          regex: '(?:r|s)k_[live|test]_[0-9a-zA-Z]{24}'
+          type: 'Stripe API key'
+      -
+          regex: '[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com'
+          type: 'Google OAuth Key'
+      -
+          regex: 'AIza[0-9A-Za-z\\-_]{35}'
+          type: 'Google Cloud API Key'
+      -
+          regex: 'ya29\\.[0-9A-Za-z\\-_]+'
+          type: 'Google OAuth Access Token'
+      -
+          regex: 'sk_[live|test]_[0-9a-z]{32}'
+          type: 'Picatic API key'
+      -
+          regex: 'sq0atp-[0-9A-Za-z\-_]{22}'
+          type: 'Square Access Token'
+      -
+          regex: 'sq0csp-[0-9A-Za-z\-_]{43}'
+          type: 'Square OAuth Secret'
+      -
+          regex: 'access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}'
+          type: 'PayPal/Braintree Access Token'
+      -
+          regex: 'amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+          type: 'Amazon MWS Auth Token'
+      -
+          regex: 'SK[0-9a-fA-F]{32}'
+          type: 'Twilo API Key'
+      -
+          regex: 'SG\.[0-9A-Za-z\-_]{22}\.[0-9A-Za-z\-_]{43}'
+          type: 'SendGrid API Key'
+      -
+          regex: 'key-[0-9a-zA-Z]{32}'
+          type: 'MailGun API Key'
+      -
+          regex: '[0-9a-f]{32}-us[0-9]{12}'
+          type: 'MailChimp API Key'
+      -
+          regex: 'sshpass -p.*[''|\"]'
+          type: 'SSH Password'
+      -
+          regex: '(https\\://outlook\\.office.com/webhook/[0-9a-f-]{36}\\@)'
+          type: 'Outlook team'
+      -
+          regex: '(?i)sauce.{0,50}(\"|''|`)?[0-9a-f-]{36}(\"|''|`)?'
+          type: 'Sauce Token'
+      -
+          regex: '(xox[pboa]-[0-9]{12}-[0-9]{12}-[A-Za-z0-9]{24})'
+          type: 'Slack Token'
+      -
+          regex: '(xox[pboa]-[0-9]{12}-[0-9]{12}-[0-9]{12}-[a-z0-9]{32})'
+          type: 'Slack Token'
+      -
+          regex: 'https://hooks.slack.com/services/T[a-zA-Z0-9_]{8}/B[a-zA-Z0-9_]{8}/[a-zA-Z0-9_]{24}'
+          type: 'Slack Webhook'
+      -
+          regex: '(?i)sonar.{0,50}(\"|''|`)?[0-9a-f]{40}(\"|''|`)?'
+          type: 'SonarQube Docs API Key'
+      -
+          regex: '(?i)hockey.{0,50}(\"|''|`)?[0-9a-f]{32}(\"|''|`)?'
+          type: HockeyApp
+      -
+          regex: '([\w+]{1,24})(://)([^$<]{1})([^\s";]{1,}):([^$<]{1})([^\s";/]{1,})@[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,24}([^\s]+)'
+          type: 'Username and password in URI'
+      -
+          regex: 'oy2[a-z0-9]{43}'
+          type: 'NuGet API Key'
+      -
+          regex: 'hawk\.[0-9A-Za-z\-_]{20}\.[0-9A-Za-z\-_]{20}'
+          type: 'StackHawk API Key'
+      -
+          regex: '-----BEGIN (EC |RSA |DSA |OPENSSH |PGP |)PRIVATE KEY'
+          type: 'Contains a private key'
+      -
+          regex: 'define(.{0,20})?(DB_CHARSET|NONCE_SALT|LOGGED_IN_SALT|AUTH_SALT|NONCE_KEY|DB_HOST|DB_PASSWORD|AUTH_KEY|SECURE_AUTH_KEY|LOGGED_IN_KEY|DB_NAME|DB_USER)(.{0,20})?[''|"].{10,120}[''|"]'
+          type: WP-Config
+      -
+          regex: '(?i)(aws_access_key_id|aws_secret_access_key)(.{0,20})?=.[0-9a-zA-Z\/+]{20,40}'
+          type: 'AWS cred file info'
+      -
+          regex: '(?i)(facebook|fb)(.{0,20})?(?-i)[''\"][0-9a-f]{32}[''\"]'
+          type: 'Facebook Secret Key'
+      -
+          regex: '(?i)(facebook|fb)(.{0,20})?[''\"][0-9]{13,17}[''\"]'
+          type: 'Facebook Client ID'
+      -
+          regex: '(?i)twitter(.{0,20})?[''\"][0-9a-z]{35,44}[''\"]'
+          type: 'Twitter Secret Key'
+      -
+          regex: '(?i)twitter(.{0,20})?[''\"][0-9a-z]{18,25}[''\"]'
+          type: 'Twitter Client ID'
+      -
+          regex: '(?i)github(.{0,20})?(?-i)[''\"][0-9a-zA-Z]{35,40}[''\"]'
+          type: 'Github Key'
+      -
+          regex: '(?i)heroku(.{0,20})?[''"][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}[''"]'
+          type: 'Heroku API key'
+      -
+          regex: '(?i)linkedin(.{0,20})?(?-i)[''\"][0-9a-z]{12}[''\"]'
+          type: 'Linkedin Client ID'
+      -
+          regex: '(?i)linkedin(.{0,20})?[''\"][0-9a-z]{16}[''\"]'
+          type: 'LinkedIn Secret Key'
