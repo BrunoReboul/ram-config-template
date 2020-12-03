@@ -1,7 +1,7 @@
 # ram-config-template
 
 Real-time Asset Monitor configuration template to be cloned and adapted to your environment.  
-[Product overview](docs/product_overview.md)
+[Product overview.](docs/product_overview.md)
 
 ## Customize compliance rules
 
