@@ -1,0 +1,80 @@
+apiVersion: constraints.gatekeeper.sh/v1alpha1
+kind: CIGroupSettingsConstraintV1
+metadata:
+  name: to_be_adapted
+  annotations:
+    description: All non mailing lists groups must conform to these settings.
+    category: Identity and Access Management
+spec:
+  severity: major
+  match:
+    target: ['directories/'] # to_be_adapted
+    exclude:
+  parameters:
+    mode: "whitelist"
+    selector:
+      email:  # GLOB, with . and @ as separators !!!! ALL LOWERCASE
+        - '**'
+      description: # Regexp
+        - '^Mailing list.*'
+      description_eval: "false"
+    settings: # to_be_adapted
+      whoCanAdd: "ALL_OWNERS_CAN_ADD"
+      whoCanJoin: "INVITED_CAN_JOIN"
+      whoCanViewMembership: "ALL_OWNERS_CAN_VIEW" 
+      whoCanViewGroup: "ALL_OWNERS_CAN_VIEW"
+      whoCanInvite: "ALL_OWNERS_CAN_INVITE"
+      allowExternalMembers: "false"
+      whoCanLeaveGroup: "NONE_CAN_LEAVE"
+      allowWebPosting: "false" 
+      archiveOnly: "false"
+      sendMessageDenyNotification: "false"
+      showInGroupDirectory: "false"
+      includeInGlobalAddressList: "false"
+      whoCanApproveMembers: "ALL_OWNERS_CAN_APPROVE"
+      whoCanModifyMembers: "OWNERS_ONLY"
+      whoCanApproveMessages: "OWNERS_ONLY"
+      whoCanDeleteAnyPost: "OWNERS_ONLY"
+      whoCanDeleteTopics: "OWNERS_ONLY"
+      whoCanLockTopics: "OWNERS_ONLY"
+      whoCanMoveTopicsIn: "OWNERS_ONLY"
+      whoCanMoveTopicsOut: "OWNERS_ONLY"
+      whoCanPostAnnouncements: "OWNERS_ONLY"
+      whoCanBanUsers: "OWNERS_ONLY"
+      whoCanPostMessage: "ALL_OWNERS_CAN_POST"
+      whoCanModerateMembers: "OWNERS_ONLY"
+      whoCanModerateContent: "OWNERS_ONLY"
+      whoCanDiscoverGroup: "ALL_MEMBERS_CAN_DISCOVER"
+      enableCollaborativeInbox: "false"
+      whoCanContactOwner: "ALL_MANAGERS_CAN_CONTACT"
+
+      #  allowGoogleCommunication: "false",
+      #  customRolesEnabledForSettingsToBeMerged: "false",
+      #  favoriteRepliesOnTop: "true",
+      #  includeCustomFooter: "false",
+      #  isArchived: "true",
+      #  maxMessageBytes: 26214400,
+      #  membersCanPostAsTheGroup: "true",
+      #  messageDisplayFont: "DEFAULT_FONT",
+      #  messageModerationLevel: "MODERATE_NONE",
+      #  replyTo: "REPLY_TO_IGNORE",
+      #  spamModerationLevel: "REJECT",
+      #  whoCanAddReferences: "NONE",
+      #  whoCanAssignTopics: "ALL_MEMBERS",
+      #  whoCanAssistContent: "ALL_MEMBERS",
+      #  whoCanEnterFreeFormTags: "ALL_MEMBERS",
+      #  whoCanHideAbuse: "ALL_MEMBERS",
+      #  whoCanMakeTopicsSticky: "ALL_MEMBERS",
+      #  whoCanMarkDuplicate: "ALL_MEMBERS",
+      #  whoCanMarkFavoriteReplyOnAnyTopic: "ALL_MEMBERS",
+      #  whoCanMarkFavoriteReplyOnOwnTopic: "NONE",
+      #  whoCanMarkNoResponseNeeded: "ALL_MEMBERS",
+      #  whoCanModifyTagsAndCategories: "ALL_MEMBERS",
+      #  whoCanTakeTopics: "ALL_MEMBERS",
+      #  whoCanUnassignTopic: "ALL_MEMBERS",
+      #  whoCanUnmarkFavoriteReplyOnAnyTopic: "ALL_MEMBERS",
+
+    exemptions: []
+    
+    
+
