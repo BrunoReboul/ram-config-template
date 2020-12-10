@@ -27,7 +27,7 @@ spec:
   parameters:
     group_selector:
       email:  # GLOB, with . and @ as separators !!!! ALL LOWERCASE
-        - '**'
+        - '**' # to_be_adapted
       email_mode: "whitelist"
       description: # Regexp
         - '^Mailing List.*' # to_be_adapted

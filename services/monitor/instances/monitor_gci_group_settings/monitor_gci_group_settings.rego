@@ -70,7 +70,7 @@ deny[{
     trace(sprintf("settingsToCheck : %v", [settingsToCheck]))
 
 
-    message := sprintf("Settings for group %v are not compliant.", [groupEmail])
+    message := sprintf("Group %v settings are not compliant.", [groupEmail])
     metadata := {"resource": asset.name}
 }
 
