@@ -1,0 +1,37 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+apiVersion: constraints.gatekeeper.sh/v1alpha1
+kind: CIGroupMembersConstraintV1
+metadata:
+  name: external_members_denied
+  annotations:
+    description: Members must be from ADEO domains only
+    category: Identity and Access Management
+    documentation: https://github.com/adeo/DataFactoryArchitecture/blob/master/Heimdall-Manual/components/gci_group_members.md
+spec:
+  severity: major
+  match:
+    target: [directories/]
+    exclude:
+  parameters:
+    mode: whitelist
+    selector:
+      email:  # GLOB, with . and @ as separators
+        - '**'
+    exemptions: [""] # on member email, not group email or asset.name
+    members:
+    - "**@**.gserviceaccount.com" # service accounts are OK
+    - "**@example.domain.com"
+    - "**@anotherdomain.org"
