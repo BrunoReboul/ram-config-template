@@ -44,7 +44,7 @@ deny[{
     trace(sprintf("Violation found  if %v != %v", [desired_count,count(matches)]))
     count(matches_found) != desired_count
 
-    message := sprintf("Network %v is present.", [network_name])
+    message := sprintf("Network %v is a forbidden network.", [network_name])
     metadata := {"resource": asset.name}
 }
 
