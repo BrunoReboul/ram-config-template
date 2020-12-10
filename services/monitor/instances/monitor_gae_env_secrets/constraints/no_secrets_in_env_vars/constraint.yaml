@@ -22,7 +22,7 @@ metadata:
 spec:
   severity: critical
   match:
-    target: ["organization/"] # to_be_adapted
+    target: [organization/] # to_be_adapted
     exclude: 
   parameters:
     name_whitelist: # to_be_adapted
