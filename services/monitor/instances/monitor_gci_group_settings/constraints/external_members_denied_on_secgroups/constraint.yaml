@@ -15,25 +15,27 @@
 apiVersion: constraints.gatekeeper.sh/v1alpha1
 kind: CIGroupSettingsConstraintV1
 metadata:
-  name: external_members_denied_on_mailinglists
+  name: external_members_denied_on_secgroups
   annotations:
     description: allowExternalMembers must be false for all groups.
     category: Identity and Access Management
 spec:
   severity: major
   match:
-    target: ['directories/'] # to_be_adapted
+    target: [directories/] # to_be_adapted
     exclude:
   parameters:
-    mode: "blacklist"
-    selector:
+    group_selector:
       email:  # GLOB, with . and @ as separators !!!! ALL LOWERCASE
         - '**'
+      email_mode: "whitelist"
       description: # Regexp
-        - '^Mailing List.*'
-      description_eval: "true"
-    settings:
+        - '^Mailing List.*' # to_be_adapted
+        - '^Collaborative mailbox.*' # to_be_adapted
+      description_mode: "blacklist"
+    settings: # to_be_adapted
       allowExternalMembers: "true"
-    exemptions: []
+    settings_mode: "blacklist"
+    exemptions: [] # array of group email to ignore
     
     

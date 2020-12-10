@@ -21,50 +21,64 @@ deny[{
     "details": metadata,
 }] {
     constraint := input.constraint
-	lib.get_constraint_params(constraint, params)
-    mode := lib.get_default(params, "mode", "whitelist")
-	
-    # target_match_count(mode, desired_count)
-    settingsToCheck := params.settings
+    lib.get_constraint_params(constraint, params)
 
-    groupEmailMatching := lib.get_default(params.selector, "email", ["**"] )
-    groupDescPattern := lib.get_default(params.selector, "description", [".*"])
-    groupDescEval := lib.get_default(params.selector, "description_eval", "true")
+    exempt_list := lib.get_default(params, "exemptions", [])
+    settingsToCheck := params.settings
+    settingsMode := lib.get_default(params, "settings_mode", "whitelist")
+
+    groupEmailMatching := lib.get_default(params.group_selector, "email", ["**"] )
+    groupEmailMode := lib.get_default(params.group_selector, "email_mode", "whitelist" )
+    groupDescPattern := lib.get_default(params.group_selector, "description", [".*"])
+    groupDescMode := lib.get_default(params.group_selector, "description_mode", "whitelist")
     # DEBUG
+	trace(sprintf("settingsMode : %v", [settingsMode]))
     trace(sprintf("groupEmailMatching : %v", [groupEmailMatching]))
+    trace(sprintf("groupEmailMode : %v", [groupEmailMode]))
     trace(sprintf("groupDescPattern : %v", [groupDescPattern]))
-    trace(sprintf("groupDescEval : %v", [groupDescEval]))
+    trace(sprintf("groupDescMode : %v", [groupDescMode]))
 
     asset := input.asset
     asset.asset_type == "groupssettings.googleapis.com/groupSettings" # test if asset is a GroupSetting
 
+
+    # get group infos
     groupSettings := asset.resource
     groupEmail := lower(groupSettings.email)
     groupDescription := lib.get_default(groupSettings, "description", "")  
-    # DEBUG
     trace(sprintf("groupEmail : %v", [groupEmail]))
     trace(sprintf("groupDescription : %v", [groupDescription]))
 
-    description_matches(groupDescPattern[_],groupDescription, groupDescEval )
+    # Check if resource is in exempt list 
+	matches := {groupEmail} & cast_set(exempt_list)
+	count(matches) == 0
+
+    # Keep or reject group based on group email    
+    groupEmailMatches := [ groupEmail | glob.match(groupEmailMatching[_] , [".","@"], groupEmail)]
+    trace(sprintf("groupEmailMatches : %v", [groupEmailMatches]))
+    count(groupEmailMatches) == target_match_count(groupEmailMode)
     
-    glob.match(groupEmailMatching[_] , [".","@"], groupEmail)
-        
+    # Keep or reject group based on group description    
+    groupDescMatches := [groupDescription |  re_match(groupDescPattern[_], groupDescription) ]
+    trace(sprintf("groupDescMatches : %v", [groupDescMatches]))
+    count(groupDescMatches) == target_match_count(groupDescMode)
+  
+    # check group settings
+    check_settings(settingsToCheck,groupSettings,settingsMode)
+    
     trace(sprintf("groupSettings : %v", [groupSettings]))
     trace(sprintf("settingsToCheck : %v", [settingsToCheck]))
 
-	exempt_list := lib.get_default(params, "exemptions", [])
-
-    check_settings(settingsToCheck,groupSettings,mode)
-
-	# Check if resource is in exempt list
-	matches := {groupEmail} & cast_set(exempt_list)
-	count(matches) == 0
 
     message := sprintf("Settings for group %v are not compliant.", [groupEmail])
     metadata := {"resource": asset.name}
 }
 
+###########################
+# Rule Utilities
+###########################
 
+# Check values for settings
 check_settings(groupSettings,settingsToCheck,mode)  {
     mode == "whitelist"
     settingsToCheck[k1] != groupSettings[k2]; k1 == k2
@@ -75,16 +89,10 @@ check_settings(groupSettings,settingsToCheck,mode)  {
     settingsToCheck[k1] == groupSettings[k2]; k1 == k2
 }
 
-
-description_matches (groupDescPattern,groupDescription, groupDescEval) {
-    re_match(groupDescPattern, groupDescription)
-    groupDescEval == "true"
+target_match_count(mode) = 0 {
+	mode == "blacklist"
 }
 
-
-description_matches (groupDescPattern,groupDescription, groupDescEval) {
-    not re_match(groupDescPattern, groupDescription)
-    groupDescEval == "false"
+target_match_count(mode) = 1 {
+	mode == "whitelist"
 }
-
-
