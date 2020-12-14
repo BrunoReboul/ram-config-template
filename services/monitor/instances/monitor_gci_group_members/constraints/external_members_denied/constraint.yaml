@@ -17,9 +17,8 @@ kind: CIGroupMembersConstraintV1
 metadata:
   name: external_members_denied
   annotations:
-    description: Members must be from ADEO domains only
+    description: Members must be from owned domains only
     category: Identity and Access Management
-    documentation: https://github.com/adeo/DataFactoryArchitecture/blob/master/Heimdall-Manual/components/gci_group_members.md
 spec:
   severity: major
   match:
@@ -35,3 +34,5 @@ spec:
     - "**@**.gserviceaccount.com" # service accounts are OK
     - "**@example.domain.com"
     - "**@anotherdomain.org"
+    # - "**@mydomainone.com"
+    # - "**@mydomaintwo.com"
