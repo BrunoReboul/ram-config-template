@@ -93,6 +93,7 @@ monitoring:
       - bigtableadmin.googleapis.com/Instance
       - bigtableadmin.googleapis.com/Table
       - cloudbilling.googleapis.com/BillingAccount
+      - cloudfunctions.googleapis.com/CloudFunction
       - cloudkms.googleapis.com/CryptoKey
       - cloudkms.googleapis.com/CryptoKeyVersion
       - cloudkms.googleapis.com/KeyRing
@@ -170,6 +171,7 @@ monitoring:
       - appengine.googleapis.com/Service
       - bigquery.googleapis.com/Dataset
       - bigtableadmin.googleapis.com/Instance
+      - cloudfunctions.googleapis.com/CloudFunction
       - cloudkms.googleapis.com/CryptoKey
       - cloudresourcemanager.googleapis.com/Folder
       - cloudresourcemanager.googleapis.com/Organization
