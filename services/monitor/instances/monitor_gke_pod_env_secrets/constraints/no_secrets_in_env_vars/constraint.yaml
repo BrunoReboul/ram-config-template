@@ -22,7 +22,7 @@ metadata:
 spec:
   severity: critical
   match:
-    target: ["organization/"]
+    target: [organization/]
   parameters:
     name_whitelist:
       - GOOGLE_CREDENTIALS_PATH
