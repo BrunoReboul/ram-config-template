@@ -49,6 +49,8 @@ hosting:
     dataset:
       name: ram
       location: EU
+    views:
+      intervalDays: 7
   pubsub:
     topicNames:
       IAMPolicies: cai-iam-policies
