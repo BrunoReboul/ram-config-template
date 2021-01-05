@@ -37,7 +37,7 @@ deny[{
 	env_vars_not_wl := { e:env_vars[e] | not is_whitelisted(e,name_whitelist)}
 	# trace(sprintf("env_vars not whitelisted: %v", [env_vars_not_wl]))
 
-	name_matches_found := [e |  env_vars_not_wl[e] ; contains(e,envname_contains[_])]
+	name_matches_found := [e |  env_vars_not_wl[e] ; contains(lower(e),lower(envname_contains[_]))]
 	# trace(sprintf("name_matches_found: %v", [name_matches_found]))
 	
 	value_matches_found := [sprintf("%v (reason: %v)", [e,envvalue_contains[v].type]) |  {env_vars[e],envvalue_contains[v]} ; re_match(envvalue_contains[v].regex,env_vars[e])]
