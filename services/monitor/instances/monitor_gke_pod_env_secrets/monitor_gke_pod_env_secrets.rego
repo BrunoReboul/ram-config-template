@@ -78,7 +78,7 @@ check_for_name(container,name_contains,name_whitelist) = matches_found {
 }
 
 env_check_name(env_var, env_contain) {
-	contains(env_var.name,env_contain)
+	contains(lower(env_var.name),lower(env_contain))
 
 	# check if variable has a value, do not triggger a violation if not.
 	env_var.value 
