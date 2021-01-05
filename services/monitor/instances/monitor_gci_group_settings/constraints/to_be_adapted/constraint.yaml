@@ -1,0 +1,97 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+apiVersion: constraints.gatekeeper.sh/v1alpha1
+kind: CIGroupSettingsConstraintV1
+metadata:
+  name: to_be_adapted
+  annotations:
+    description: All non mailing lists groups must conform to these settings.
+    category: Identity and Access Management
+spec:
+  severity: major
+  match:
+    target: [directories/] # to_be_adapted
+    exclude:
+  parameters:
+    group_selector:
+      email:  # GLOB, with . and @ as separators !!!! ALL LOWERCASE
+        - '**' # to_be_adapted
+      email_mode: "whitelist"
+      description: # Regexp
+        - '^Mailing List.*' # to_be_adapted
+        - '^Collaborative mailbox.*' # to_be_adapted
+      description_mode: "blacklist"
+
+    settings_mode: "whitelist"
+    settings: # to_be_adapted
+      whoCanAdd: "ALL_OWNERS_CAN_ADD"
+      whoCanJoin: "INVITED_CAN_JOIN"
+      whoCanViewMembership: "ALL_OWNERS_CAN_VIEW" 
+      whoCanViewGroup: "ALL_OWNERS_CAN_VIEW"
+      whoCanInvite: "ALL_OWNERS_CAN_INVITE"
+      # allowExternalMembers: "false"
+      whoCanLeaveGroup: "NONE_CAN_LEAVE"
+      allowWebPosting: "false" 
+      archiveOnly: "false"
+      sendMessageDenyNotification: "false"
+      showInGroupDirectory: "false"
+      includeInGlobalAddressList: "false"
+      whoCanApproveMembers: "ALL_OWNERS_CAN_APPROVE"
+      whoCanModifyMembers: "OWNERS_ONLY"
+      whoCanApproveMessages: "OWNERS_ONLY"
+      whoCanDeleteAnyPost: "OWNERS_ONLY"
+      whoCanDeleteTopics: "OWNERS_ONLY"
+      whoCanLockTopics: "OWNERS_ONLY"
+      whoCanMoveTopicsIn: "OWNERS_ONLY"
+      whoCanMoveTopicsOut: "OWNERS_ONLY"
+      whoCanPostAnnouncements: "OWNERS_ONLY"
+      whoCanBanUsers: "OWNERS_ONLY"
+      whoCanPostMessage: "ALL_OWNERS_CAN_POST"
+      whoCanModerateMembers: "OWNERS_ONLY"
+      whoCanModerateContent: "OWNERS_ONLY"
+      whoCanDiscoverGroup: "ALL_MEMBERS_CAN_DISCOVER"
+      enableCollaborativeInbox: "false"
+      whoCanContactOwner: "ALL_MANAGERS_CAN_CONTACT"
+
+      #  allowGoogleCommunication: "false",
+      #  customRolesEnabledForSettingsToBeMerged: "false",
+      #  favoriteRepliesOnTop: "true",
+      #  includeCustomFooter: "false",
+      #  isArchived: "true",
+      #  maxMessageBytes: 26214400,
+      #  membersCanPostAsTheGroup: "true",
+      #  messageDisplayFont: "DEFAULT_FONT",
+      #  messageModerationLevel: "MODERATE_NONE",
+      #  replyTo: "REPLY_TO_IGNORE",
+      #  spamModerationLevel: "REJECT",
+      #  whoCanAddReferences: "NONE",
+      #  whoCanAssignTopics: "ALL_MEMBERS",
+      #  whoCanAssistContent: "ALL_MEMBERS",
+      #  whoCanEnterFreeFormTags: "ALL_MEMBERS",
+      #  whoCanHideAbuse: "ALL_MEMBERS",
+      #  whoCanMakeTopicsSticky: "ALL_MEMBERS",
+      #  whoCanMarkDuplicate: "ALL_MEMBERS",
+      #  whoCanMarkFavoriteReplyOnAnyTopic: "ALL_MEMBERS",
+      #  whoCanMarkFavoriteReplyOnOwnTopic: "NONE",
+      #  whoCanMarkNoResponseNeeded: "ALL_MEMBERS",
+      #  whoCanModifyTagsAndCategories: "ALL_MEMBERS",
+      #  whoCanTakeTopics: "ALL_MEMBERS",
+      #  whoCanUnassignTopic: "ALL_MEMBERS",
+      #  whoCanUnmarkFavoriteReplyOnAnyTopic: "ALL_MEMBERS",
+
+    exemptions: [] # array of group email to ignore
+    
+    
+
