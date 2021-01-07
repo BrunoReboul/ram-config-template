@@ -23,13 +23,13 @@ deny[{
     constraint := input.constraint
     lib.get_constraint_params(constraint, params)
     refConfig := lib.get_default(params, "shieldedInstanceConfig", [])
-    trace(sprintf("refConfig: %v", [ refConfig]))
+    # trace(sprintf("refConfig: %v", [ refConfig]))
     
     asset := input.asset
     asset.asset_type == "compute.googleapis.com/Instance"
     instance := asset.resource.data
     shieldedInstanceConfig := lib.get_default(instance, "shieldedInstanceConfig", {})
-    trace(sprintf("shieldedInstanceConfig: %v", [ shieldedInstanceConfig]))
+    # trace(sprintf("shieldedInstanceConfig: %v", [ shieldedInstanceConfig]))
                 
 
 
@@ -41,12 +41,6 @@ deny[{
 check_config (shieldedInstanceConfig,refConfig) {
     count(shieldedInstanceConfig)!=0
     refConfig[key]
-    trace(sprintf("refConfig[key]: %v", [ refConfig[key]]))
-    trace(sprintf("key: %v", [key]))
-    # shieldedInstanceConfig.key
-
-    # trace(sprintf("shieldedInstanceConfig.key: %v", [ shieldedInstanceConfig.key]))
-    # trace(sprintf("shieldedInstanceConfig[%v]: %v", [ key,shieldedInstanceConfig[key]]))
     object.get(shieldedInstanceConfig, key, "undef")  != refConfig[key]
 }
 
