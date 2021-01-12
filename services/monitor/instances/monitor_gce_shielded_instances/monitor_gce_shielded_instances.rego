@@ -44,6 +44,6 @@ check_config (shieldedInstanceConfig,refConfig) {
     object.get(shieldedInstanceConfig, key, "undef")  != refConfig[key]
 }
 
-check_config (shieldedInstanceConfig,flagsToCheck) {
+check_config (shieldedInstanceConfig,refConfig) {
     count(shieldedInstanceConfig)==0
 }
