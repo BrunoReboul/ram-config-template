@@ -107,14 +107,21 @@ Create a folder for `ram` and follow the next steps using a user account with fu
 
 ## Tag to deploy RAM microservices instances
 
-**Warmup** Cloud build on a brand new project:
+**Heads up** Cloud build on a brand new project:
 
 - Launching more than 100 cloud build jobs simultaneously, on a brand new project where cloud build had never been used, may lead to fail the first hundred with the error `Your build failed to run: generic::invalid_argument: invalid bucket "10blabla19.cloudbuild-logs.googleusercontent.com"; builder service account does not have access to the bucket`
 - Once cloud build has been use at least once on the project it is possible to launch several hundreds of builds, but not yet.
 - To work arround this issue, lets launch one build first by using the following commands:
-  - `git tag -a splitdump_single_instance-v0.0.1-dev =m "initial deployment"`
+  - `git tag -a splitdump_single_instance-v0.0.1-dev -m "initial deployment"`
   - `git push --tags`
   - Check results in console / cloud build / history. Proceed to next steps only once cloud build has run at least one job successfully.
+
+**Heads up** Very first deployment of RAM:
+
+- `publish2fs`, the service that populates the cache in firestore needs to be deployed before the real-time feeds are activated: see deadlock [issue #98](https://github.com/BrunoReboul/ram-config-template/issues/98)
+- To deploy first `publish2fs`:
+  - `git tag -a publish2fs-v0.0.1-dev -m "initial deployment"`
+  - `git push --tags`
 
 Then launch the full deployment:
 
