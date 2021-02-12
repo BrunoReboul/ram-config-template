@@ -3,10 +3,12 @@
 ## Background
 
 Cloud Functions location have to comply with data soveriegnty regulation
+The location is choosen at deployment time.
 
 ## Fix
 
-The location is choosen at deployment time.
+Re-deploy the function in an authorized region.
+Delete the function in the unauthorized region.
 
 ```shell
 gcloud functions deploy FUNCTION_NAME --region REGION FLAGS...
