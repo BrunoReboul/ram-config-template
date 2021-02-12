@@ -171,6 +171,7 @@ monitoring:
     resources:
       - appengine.googleapis.com/Application
       - appengine.googleapis.com/Service
+      - appengine.googleapis.com/Version
       - bigquery.googleapis.com/Dataset
       - bigtableadmin.googleapis.com/Instance
       - cloudfunctions.googleapis.com/CloudFunction
