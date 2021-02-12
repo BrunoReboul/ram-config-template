@@ -17,7 +17,7 @@ kind: GCPCloudfunctionLocationConstraintV1
 metadata:
   name: to_be_adapted
   annotations:
-    description: CloudFunctions must be in <to be adapted>. # to be adapted
+    description: CloudFunctions must be located in <to be adapted> for projects in <to_be_adapted>.
     category: Personnal Data Compliance
 spec:
   severity: major
@@ -25,8 +25,8 @@ spec:
     target: [organization/] # to be adapted
   parameters:
     locations: # to be adapted
-    - EU
-    - europe-north1
-    - europe-west3
-    - europe-west1
-    - europe-west4
+      - EU
+      - europe-north1
+      - europe-west3
+      - europe-west1
+      - europe-west4
