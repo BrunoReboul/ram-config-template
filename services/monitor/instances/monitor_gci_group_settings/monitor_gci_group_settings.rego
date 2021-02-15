@@ -64,13 +64,14 @@ deny[{
     count(groupDescMatches) == target_match_count(groupDescMode)
   
     # check group settings
-    check_settings(settingsToCheck,groupSettings,settingsMode)
-    
+    wrong_settings := check_settings(settingsToCheck,groupSettings,settingsMode)
+    count(wrong_settings) > 0 
+
     trace(sprintf("groupSettings : %v", [groupSettings]))
     trace(sprintf("settingsToCheck : %v", [settingsToCheck]))
+    trace(sprintf("wrong_settings : %v", [wrong_settings]))
 
-
-    message := sprintf("Group %v settings are not compliant.", [groupEmail])
+    message := sprintf("Group %v has non-compliant settings: [ %v ].", [groupEmail, concat(", ", wrong_settings)])
     metadata := {"resource": asset.name}
 }
 
@@ -79,14 +80,16 @@ deny[{
 ###########################
 
 # Check values for settings
-check_settings(groupSettings,settingsToCheck,mode)  {
+check_settings(groupSettings,settingsToCheck,mode) = ko_setting  {
     mode == "whitelist"
-    settingsToCheck[k1] != groupSettings[k2]; k1 == k2
+    ko_setting := [sprintf("%v is %v should be %v", [k1,settingsToCheck[k1], groupSettings[k2]]) | settingsToCheck[k1] != groupSettings[k2]; k1 == k2]
+    
 }
 
-check_settings(groupSettings,settingsToCheck,mode)  {
+check_settings(groupSettings,settingsToCheck,mode) = ko_setting {
     mode == "blacklist"
-    settingsToCheck[k1] == groupSettings[k2]; k1 == k2
+    ko_setting := [ sprintf("%v cannot be %v", [k1,settingsToCheck[k1]]) | settingsToCheck[k1] == groupSettings[k2]; k1 == k2 ]
+    
 }
 
 target_match_count(mode) = 0 {
