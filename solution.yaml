@@ -184,6 +184,7 @@ monitoring:
       - compute.googleapis.com/Network
       - compute.googleapis.com/Project
       - compute.googleapis.com/Snapshot
+      - compute.googleapis.com/Router
       - compute.googleapis.com/SslCertificate
       - compute.googleapis.com/Subnetwork
       - container.googleapis.com/Cluster
