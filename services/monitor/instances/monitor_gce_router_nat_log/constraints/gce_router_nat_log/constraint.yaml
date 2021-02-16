@@ -13,11 +13,11 @@
 # limitations under the License.
 #
 apiVersion: constraints.gatekeeper.sh/v1alpha1
-kind: GCPNetworkEnableRouterLogsConstraintV1
+kind: GCPNetworkEnableRouterNATLogsConstraintV1
 metadata:
-  name: gce_router_log
+  name: gce_router_nat_log
   annotations:
-    description: GCE NAT Gateway must log All (errors and translations).
+    description: GCE router NAT Gateway must log All (errors and translations).
     category: Infrastructure Hardening
 spec:
   severity: medium

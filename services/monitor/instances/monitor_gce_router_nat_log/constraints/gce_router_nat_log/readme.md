@@ -1,10 +1,10 @@
-# monitor_gce_router_log gce_router_log
+# monitor_gce_router_nat_log gce_router_nat_log
 
 ## Background
 
-GCE Cloud Router must log ALL requests
+GCE Cloud Router / Cloud NAT must log ALL requests
 
-For accountability issues and to help troubleshooting, Cloud Router should have logging enabled and log all events, translations AND errors.
+For accountability issues and to help troubleshooting, Cloud Router's NATs should have logging enabled and log all events, translations AND errors.
 
 ## Fix
 
