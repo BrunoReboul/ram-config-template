@@ -28,6 +28,6 @@ deny[{
 	trace(sprintf("ssl_policy : %v",[ssl_policy]))
     ssl_policy == false
 
-    message := sprintf("Target HTTPS Proxy %v has no SSL Policy.", [targetSslProxy.name])
+    message := sprintf("Target SSL Proxy %v has no SSL Policy.", [targetSslProxy.name])
     metadata := {"resource": asset.name}
 }
