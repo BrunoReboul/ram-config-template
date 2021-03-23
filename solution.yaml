@@ -61,6 +61,19 @@ hosting:
   firestore:
     collectionIDs:
       assets: assets
+  freshnessSLODefinitions:
+    - origin: batch-export
+      slo: 0.99
+      cutOffBucketNumber: 32
+    - origin: real-time
+      slo: 0.99
+      cutOffBucketNumber: 24
+    - origin: batch-listgroups
+      slo: 0.99
+      cutOffBucketNumber: 43
+    - origin: real-time-log-export
+      slo: 0.99
+      cutOffBucketNumber: 30
 monitoring:
   organizationIDs:
     - "<your GCP organization ID, add multiple lines if needed>"
@@ -173,7 +186,6 @@ monitoring:
       - appengine.googleapis.com/Service
       - appengine.googleapis.com/Version
       - bigquery.googleapis.com/Dataset
-      - bigtableadmin.googleapis.com/Instance
       - cloudfunctions.googleapis.com/CloudFunction
       - cloudkms.googleapis.com/CryptoKey
       - cloudresourcemanager.googleapis.com/Folder
@@ -181,23 +193,15 @@ monitoring:
       - cloudresourcemanager.googleapis.com/Project
       - compute.googleapis.com/Disk
       - compute.googleapis.com/Firewall
-      - compute.googleapis.com/ForwardingRule
-      - compute.googleapis.com/GlobalForwardingRule
       - compute.googleapis.com/Instance
       - compute.googleapis.com/Network
-      - compute.googleapis.com/Project
-      - compute.googleapis.com/Snapshot
       - compute.googleapis.com/Router
-      - compute.googleapis.com/SslCertificate
       - compute.googleapis.com/Subnetwork
+      - compute.googleapis.com/TargetHttpsProxy
+      - compute.googleapis.com/TargetSslProxy
       - container.googleapis.com/Cluster
-      - dataproc.googleapis.com/Cluster
-      - dataproc.googleapis.com/Job
       - dns.googleapis.com/ManagedZone
-      - iam.googleapis.com/ServiceAccount
       - iam.googleapis.com/ServiceAccountKey
       - k8s.io/Pod
-      - serviceusage.googleapis.com/Service
-      - spanner.googleapis.com/Instance
       - sqladmin.googleapis.com/Instance
       - storage.googleapis.com/Bucket
