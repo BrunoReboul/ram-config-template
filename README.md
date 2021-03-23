@@ -1,7 +1,7 @@
 # ram-config-template
 
 Real-time Asset Monitor configuration template to be cloned and adapted to your environment.  
-[Product overview](docs/product_overview.md)
+[Product overview.](docs/product_overview.md)
 
 ## Customize compliance rules
 
@@ -115,13 +115,6 @@ Create a folder for `ram` and follow the next steps using a user account with fu
   - `git tag -a splitdump_single_instance-v0.0.1-dev -m "initial deployment"`
   - `git push --tags`
   - Check results in console / cloud build / history. Proceed to next steps only once cloud build has run at least one job successfully.
-
-**Heads up** Very first deployment of RAM:
-
-- `publish2fs`, the service that populates the cache in firestore needs to be deployed before the real-time feeds are activated: see deadlock [issue #98](https://github.com/BrunoReboul/ram-config-template/issues/98)
-- To deploy first `publish2fs`:
-  - `git tag -a publish2fs-v0.0.1-dev -m "initial deployment"`
-  - `git push --tags`
 
 Then launch the full deployment:
 
