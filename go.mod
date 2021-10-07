@@ -1,6 +1,5 @@
 module example.com/ramcli
 
-// 1.13.8 is the go version used in the go113 Cloud Function enviroment
-go 1.13
+go 1.16
 
-require github.com/BrunoReboul/ram v0.4.1
+require github.com/BrunoReboul/ram v0.4.2

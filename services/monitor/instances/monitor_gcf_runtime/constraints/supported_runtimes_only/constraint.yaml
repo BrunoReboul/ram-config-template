@@ -28,11 +28,13 @@ spec:
     runtimes: # to be adapted; see https://cloud.google.com/functions/docs/concepts/exec
       - dotnet3
       - go113
+      - go116
       - java11
       - nodejs10
       - nodejs12
       - nodejs14
-      - python37
+      - nodejs16
+      - php74
       - python38
       - python39
       - ruby26
