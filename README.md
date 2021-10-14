@@ -60,6 +60,7 @@ Folder, group, service account and permission pre-requisites are described [HERE
 
 ## Build RAM cli
 
+`go mod tidy`  
 `go build ram.go`
 
 ## Set GOOGLE_APPLICATION_CREDENTIALS environment variable
