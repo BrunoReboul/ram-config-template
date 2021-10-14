@@ -24,8 +24,6 @@ To use ram cli the team setup the environment variable [GOOGLE_APPLICATION_CREDE
     - `servicemanagement.services.bind`
     - `iam.serviceAccounts.update`
     - `clientauthconfig.clients.update`
-  - To manually setup Stackdriver workspace
-    - `roles/stackdriver.accounts.editor` several stackdriver permissions (get, edit) are not supported in custom roles
   - To create a connected source repo and manage it
     - `roles/source.admin`
 
@@ -69,6 +67,7 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 
 #### `ram_cli_monitoring_org_extended`
 
+- `cloudasset.feeds.create`
 - `cloudasset.feeds.delete`
 - `cloudasset.feeds.get`
 - `cloudasset.feeds.list`
