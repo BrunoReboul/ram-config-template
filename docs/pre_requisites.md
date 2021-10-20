@@ -16,6 +16,7 @@ To use ram cli the team setup the environment variable [GOOGLE_APPLICATION_CREDE
 - Scope: on RAM folder
 - Roles
   - `roles/viewer`
+  - `roles/cloudscheduler.admin`
   - To manually setup firebase native mode, to give domain wide delegation could be expired with a time condition
     - `roles/datastore.owner` datastore permission are not supported in custom roles
     - Custom role to carry permissions
@@ -35,7 +36,7 @@ Service account to be used to run RAM cli using GOOGLE_APPLICATION_CREDENTIALS e
 
 When ram cli have a full set of roles (core and extended) it can automate the installation end to end from project creation to instance deployment.
 
-When ram cli have just the core set of roles, the missing deployment actions have to be performed by the team who own these roles and related tasks.
+When ram cli have just the core set of roles, the missing deployment actions have to be performed by the team who own these roles and related tasks. 
 
 #### `ram_cli_folder_core`
 
@@ -78,6 +79,10 @@ When ram cli have just the core set of roles, the missing deployment actions hav
 - `resourcemanager.organizations.get`
 - `resourcemanager.organizations.getIamPolicy`
 - `resourcemanager.organizations.setIamPolicy`
+
+The roles `ram_cli_folder_core` and `ram_cli_folder_extended` must be assigned to the ramcli service account on the ram folder
+The role `ram_cli_monitoring_org_extended` must be assigned to the ramcli service account on each monitored organization 
+
 
 #### Billing account scope role binding
 
