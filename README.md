@@ -1,4 +1,8 @@
-# ram-config-template
+# RAM v1 is now deprecated, please use [RAMv2](https://gitlab.com/realtime-asset-monitor/setup)
+
+=> [go to RAMv2](https://gitlab.com/realtime-asset-monitor/setup)
+
+ram-config-template  
 
 Real-time Asset Monitor configuration template to be cloned and adapted to your environment.  
 [Product overview.](docs/product_overview.md)
